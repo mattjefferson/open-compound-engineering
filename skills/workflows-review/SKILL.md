@@ -383,7 +383,6 @@ After creating all todo files, present comprehensive summary:
 
 ### Review Agents Used:
 
-- kieran-rails-reviewer
 - security-sentinel
 - performance-oracle
 - architecture-strategist

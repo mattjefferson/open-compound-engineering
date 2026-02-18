@@ -55,8 +55,8 @@ options:
 
 ### If Auto-configure → Skip to Step 4 with defaults:
 
-- **Rails:** `[kieran-rails-reviewer, dhh-rails-reviewer, code-simplicity-reviewer, security-sentinel, performance-oracle]`
-- **Python:** `[kieran-python-reviewer, code-simplicity-reviewer, security-sentinel, performance-oracle]`
+- **Rails:** `[code-simplicity-reviewer, security-sentinel, performance-oracle]`
+- **Python:** `[code-simplicity-reviewer, security-sentinel, performance-oracle]`
 - **TypeScript:** `[kieran-typescript-reviewer, code-simplicity-reviewer, security-sentinel, performance-oracle]`
 - **General:** `[code-simplicity-reviewer, security-sentinel, performance-oracle, architecture-strategist]`
 
@@ -116,8 +116,8 @@ options:
 ## Step 4: Build Agent List and Write File
 
 **Stack-specific agents:**
-- Rails → `kieran-rails-reviewer, dhh-rails-reviewer`
-- Python → `kieran-python-reviewer`
+- Rails → (use general reviewers)
+- Python → (use general reviewers)
 - TypeScript → `kieran-typescript-reviewer`
 - General → (none)
 
