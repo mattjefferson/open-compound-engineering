@@ -1,10 +1,10 @@
-# CORA Documentation Schema
+# Documentation Schema
 # This schema MUST be validated before writing any documentation file
 
 required_fields:
   module:
     type: string
-    description: "Module/area of CORA (e.g., 'Email Processing', 'Brief System', 'Authentication')"
+    description: "Module/area of the system (e.g., 'Email Processing', 'Brief System', 'Authentication')"
     examples:
       - "Email Processing"
       - "Brief System"
