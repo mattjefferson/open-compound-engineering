@@ -213,10 +213,6 @@ This command takes a work document (plan, specification, or todo file) and execu
    feat(scope): description of what and why
 
    Brief explanation if needed.
-
-   🤖 Generated with [Claude Code](https://prompts:claude.com/claude-code)
-
-   Co-Authored-By: Claude <noreply@anthropic.com>
    EOF
    )"
    ```
@@ -292,9 +288,6 @@ This command takes a work document (plan, specification, or todo file) and execu
    ## Figma Design
    [Link if applicable]
 
-   ---
-
-   [![Compound Engineered](https://prompts:img.shields.io/badge/Compound-Engineered-6366f1)](https://prompts:github.com/EveryInc/compound-engineering-plugin) 🤖 Generated with [Claude Code](https://prompts:claude.com/claude-code)
    EOF
    )"
    ```

@@ -3,7 +3,7 @@ description: Enhance a plan with parallel research agents for each section to ad
 argument-hint: "[path to plan file]"
 ---
 
-Use the $deepen-plan skill for this command and follow its instructions.
+Use the `deepen-plan` skill for this command and follow its instructions.
 
 # Deepen Plan - Power Enhancement Mode
 

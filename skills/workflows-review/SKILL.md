@@ -78,8 +78,8 @@ Task {agent-name}(PR content + review context from settings body)
 ```
 
 Additionally, always run these regardless of settings:
-- Use the $agent-native-reviewer skill to: PR content - Verify new features are agent-accessible
-- Use the $learnings-researcher skill to: PR content - Search docs/solutions/ for past issues related to this PR's modules and patterns
+- Use the `agent-native-reviewer` skill to: PR content - Verify new features are agent-accessible
+- Use the `learnings-researcher` skill to: PR content - Search docs/solutions/ for past issues related to this PR's modules and patterns
 
 </parallel_tasks>
 
@@ -91,9 +91,9 @@ These agents are run ONLY when the PR matches specific criteria. Check the PR fi
 
 **MIGRATIONS: If PR contains database migrations, schema.rb, or data backfills:**
 
-- Use the $schema-drift-detector skill to: PR content - Detects unrelated schema.rb changes by cross-referencing against included migrations (run FIRST)
-- Use the $data-migration-expert skill to: PR content - Validates ID mappings match production, checks for swapped values, verifies rollback safety
-- Use the $deployment-verification-agent skill to: PR content - Creates Go/No-Go deployment checklist with SQL verification queries
+- Use the `schema-drift-detector` skill to: PR content - Detects unrelated schema.rb changes by cross-referencing against included migrations (run FIRST)
+- Use the `data-migration-expert` skill to: PR content - Validates ID mappings match production, checks for swapped values, verifies rollback safety
+- Use the `deployment-verification-agent` skill to: PR content - Creates Go/No-Go deployment checklist with SQL verification queries
 
 **When to run:**
 - PR includes files matching `db/migrate/*.rb` or `db/schema.rb`
@@ -488,7 +488,7 @@ After presenting the Summary Report, offer appropriate testing based on project 
 Spawn a subagent to run browser tests (preserves main context):
 
 ```
-Use the $general-purpose skill to: "Run /prompts:test-browser for PR #[number]. Test all affected pages, check for console errors, handle failures by creating todos and fixing."
+Use the `general-purpose` skill to: "Run /prompts:test-browser for PR #[number]. Test all affected pages, check for console errors, handle failures by creating todos and fixing."
 ```
 
 The subagent will:
@@ -507,7 +507,7 @@ The subagent will:
 Spawn a subagent to run Xcode tests (preserves main context):
 
 ```
-Use the $general-purpose skill to: "Run /prompts:xcode-test for scheme [name]. Build for simulator, install, launch, take screenshots, check for crashes."
+Use the `general-purpose` skill to: "Run /prompts:xcode-test for scheme [name]. Build for simulator, install, launch, take screenshots, check for crashes."
 ```
 
 The subagent will:
