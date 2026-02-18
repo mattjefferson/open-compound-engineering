@@ -55,7 +55,7 @@ Please install the XcodeBuildMCP server first:
 claude mcp add XcodeBuildMCP -- npx xcodebuildmcp@latest
 \`\`\`
 
-Then restart Claude Code and run `/xcode-test` again.
+Then restart Claude Code and run `xcode-test` again.
 ```
 
 **Do NOT proceed** until XcodeBuildMCP is confirmed working.
@@ -321,10 +321,10 @@ mcp__xcodebuildmcp__shutdown_simulator({ simulator_id: "[uuid]" })
 /xcode-test current
 ```
 
-## Integration with /workflows-review
+## Integration with `workflows-review`
 
-When reviewing PRs that touch iOS code, the `/workflows-review` command can spawn this as a subagent:
+When reviewing PRs that touch iOS code, the `workflows-review` command can spawn this as a subagent:
 
 ```
-Task general-purpose("Run /xcode-test for scheme [name]. Build, install on simulator, test key screens, check for crashes.")
+Task general-purpose("Run `xcode-test` for scheme [name]. Build, install on simulator, test key screens, check for crashes.")
 ```

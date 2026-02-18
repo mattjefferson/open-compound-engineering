@@ -55,7 +55,7 @@ Ensure that the code is ready for analysis (either in worktree or on current bra
 <protected_artifacts>
 The following paths are compound-engineering pipeline artifacts and must never be flagged for deletion, removal, or gitignore by any review agent:
 
-- `docs/plans/*.md` — Plan files created by `/workflows-plan`. These are living documents that track implementation progress (checkboxes are checked off by `/workflows-work`).
+- `docs/plans/*.md` — Plan files created by `workflows-plan`. These are living documents that track implementation progress (checkboxes are checked off by `workflows-work`).
 - `docs/solutions/*.md` — Solution documents created during the pipeline.
 
 If a review agent flags any file in these directories for cleanup or removal, discard that finding during synthesis. Do not create a todo for it.
@@ -400,14 +400,14 @@ After creating all todo files, present comprehensive summary:
 2. **Triage All Todos**:
    ```bash
    ls todos/*-pending-*.md  # View all pending todos
-   /triage                  # Use slash command for interactive triage
+   triage                   # Use skill for interactive triage
    ```
 ````
 
 3. **Work on Approved Todos**:
 
    ```bash
-   /resolve_todo_parallel  # Fix all approved items efficiently
+   resolve_todo_parallel   # Fix all approved items efficiently
    ```
 
 4. **Track Progress**:
@@ -461,22 +461,22 @@ After presenting the Summary Report, offer appropriate testing based on project 
 **For Web Projects:**
 ```markdown
 **"Want to run browser tests on the affected pages?"**
-1. Yes - run `/test-browser`
+1. Yes - run `test-browser`
 2. No - skip
 ```
 
 **For iOS Projects:**
 ```markdown
 **"Want to run Xcode simulator tests on the app?"**
-1. Yes - run `/xcode-test`
+1. Yes - run `xcode-test`
 2. No - skip
 ```
 
 **For Hybrid Projects (e.g., Rails + Hotwire Native):**
 ```markdown
 **"Want to run end-to-end tests?"**
-1. Web only - run `/test-browser`
-2. iOS only - run `/xcode-test`
+1. Web only - run `test-browser`
+2. iOS only - run `xcode-test`
 3. Both - run both commands
 4. No - skip
 ```
@@ -488,7 +488,7 @@ After presenting the Summary Report, offer appropriate testing based on project 
 Spawn a subagent to run browser tests (preserves main context):
 
 ```
-Use the `general-purpose` skill to: "Run /test-browser for PR #[number]. Test all affected pages, check for console errors, handle failures by creating todos and fixing."
+Use the `general-purpose` skill to: "Run `test-browser` for PR #[number]. Test all affected pages, check for console errors, handle failures by creating todos and fixing."
 ```
 
 The subagent will:
@@ -500,14 +500,14 @@ The subagent will:
 6. Create P1 todos for any failures
 7. Fix and retry until all tests pass
 
-**Standalone:** `/test-browser [PR number]`
+**Standalone:** `test-browser [PR number]`
 
 #### If User Accepts iOS Testing:
 
 Spawn a subagent to run Xcode tests (preserves main context):
 
 ```
-Use the `general-purpose` skill to: "Run /xcode-test for scheme [name]. Build for simulator, install, launch, take screenshots, check for crashes."
+Use the `general-purpose` skill to: "Run `xcode-test` for scheme [name]. Build for simulator, install, launch, take screenshots, check for crashes."
 ```
 
 The subagent will:
@@ -521,7 +521,7 @@ The subagent will:
 8. Create P1 todos for any failures
 9. Fix and retry until all tests pass
 
-**Standalone:** `/xcode-test [scheme]`
+**Standalone:** `xcode-test [scheme]`
 
 ### Important: P1 Findings Block Merge
 

@@ -146,7 +146,7 @@ Quarterly:
 
 ## Suggested Workflow Integration
 
-In `/workflows:compound`:
+In `workflows-compound`:
 
 - Always show option to promote to convention.
 - Mark it as suggested when 3+ similar findings exist.

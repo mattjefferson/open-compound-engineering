@@ -80,7 +80,7 @@ Avoid "do everything" task entries.
 
 ## Integration with Workflows
 
-During `/workflows:work`:
+During `workflows-work`:
 
 - Read the plan first.
 - Track task status in a TODO artifact.

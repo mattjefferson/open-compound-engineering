@@ -19,4 +19,4 @@ topic: <kebab-case-topic>
 - [Any unresolved questions for the planning phase]
 
 ## Next Steps
-→ `/workflows:plan` for implementation details
+→ `workflows-plan` for implementation details

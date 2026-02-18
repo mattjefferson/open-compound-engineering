@@ -39,7 +39,7 @@ This skill captures problem solutions immediately after confirmation, creating s
 - "problem solved"
 - "that did it"
 
-**OR manual:** `/doc-fix` command
+**OR manual:** `doc-fix` command
 
 **Non-trivial problems only:**
 
@@ -380,7 +380,7 @@ Action:
 ## Integration Points
 
 **Invoked by:**
-- /compound command (primary interface)
+- `compound` command (primary interface)
 - Manual invocation in conversation after solution confirmed
 - Can be triggered by detecting confirmation phrases like "that worked", "it's fixed", etc.
 
