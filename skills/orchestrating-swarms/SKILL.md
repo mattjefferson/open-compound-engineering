@@ -352,7 +352,6 @@ Task({
 - `data-integrity-guardian` - Database and data safety
 - `data-migration-expert` - Migration validation
 - `deployment-verification-agent` - Pre-deploy checklists
-- `kieran-typescript-reviewer` - TypeScript best practices
 - `pattern-recognition-specialist` - Design patterns and anti-patterns
 - `performance-oracle` - Performance analysis
 - `security-sentinel` - Security vulnerabilities

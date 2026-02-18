@@ -57,7 +57,7 @@ options:
 
 - **Rails:** `[code-simplicity-reviewer, security-sentinel, performance-oracle]`
 - **Python:** `[code-simplicity-reviewer, security-sentinel, performance-oracle]`
-- **TypeScript:** `[kieran-typescript-reviewer, code-simplicity-reviewer, security-sentinel, performance-oracle]`
+- **TypeScript:** `[code-simplicity-reviewer, security-sentinel, performance-oracle]`
 - **General:** `[code-simplicity-reviewer, security-sentinel, performance-oracle, architecture-strategist]`
 
 ### If Customize → Step 3
@@ -118,7 +118,7 @@ options:
 **Stack-specific agents:**
 - Rails → (use general reviewers)
 - Python → (use general reviewers)
-- TypeScript → `kieran-typescript-reviewer`
+- TypeScript → (use general reviewers)
 - General → (none)
 
 **Focus area agents:**

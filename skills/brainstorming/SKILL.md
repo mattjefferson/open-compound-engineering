@@ -107,32 +107,7 @@ After understanding the idea, propose 2-3 concrete approaches.
 
 Summarize key decisions in a structured format.
 
-**Design Doc Structure:**
-
-```markdown
----
-date: YYYY-MM-DD
-topic: <kebab-case-topic>
----
-
-# <Topic Title>
-
-## What We're Building
-[Concise description—1-2 paragraphs max]
-
-## Why This Approach
-[Brief explanation of approaches considered and why this one was chosen]
-
-## Key Decisions
-- [Decision 1]: [Rationale]
-- [Decision 2]: [Rationale]
-
-## Open Questions
-- [Any unresolved questions for the planning phase]
-
-## Next Steps
-→ `/workflows:plan` for implementation details
-```
+**Design Doc Structure:** See `assets/brainstorm-template.md` for the full template.
 
 **Output Location:** `docs/brainstorms/YYYY-MM-DD-<topic>-brainstorm.md`
 
