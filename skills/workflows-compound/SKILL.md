@@ -6,7 +6,7 @@ description: Document a recently solved problem to compound your team's knowledg
 ## Arguments
 [optional: brief context about the fix]
 
-# /prompts:compound
+# /compound
 
 Coordinate multiple subagents working in parallel to document a recently solved problem.
 
@@ -19,8 +19,8 @@ Captures problem solutions while context is fresh, creating structured documenta
 ## Usage
 
 ```bash
-/prompts:workflows-compound                    # Document the most recent fix
-/prompts:workflows-compound [brief context]    # Provide additional context hint
+/workflows-compound                    # Document the most recent fix
+/workflows-compound [brief context]    # Provide additional context hint
 ```
 
 ## Execution Strategy: Two-Phase Orchestration
@@ -96,7 +96,7 @@ Based on problem type, optionally invoke specialized agents to review the docume
 - **performance_issue** → `performance-oracle`
 - **security_issue** → `security-sentinel`
 - **database_issue** → `data-integrity-guardian`
-- **test_failure** → `cora-test-reviewer`
+- **test_failure** → `test-reviewer`
 - Any code-heavy issue → `code-simplicity-reviewer`
 
 </parallel_tasks>
@@ -202,7 +202,7 @@ Build → Test → Find Issue → Research → Improve → Document → Validate
 
 <auto_invoke> <trigger_phrases> - "that worked" - "it's fixed" - "working now" - "problem solved" </trigger_phrases>
 
-<manual_override> Use /prompts:workflows-compound [context] to document immediately without waiting for auto-detection. </manual_override> </auto_invoke>
+<manual_override> Use /workflows-compound [context] to document immediately without waiting for auto-detection. </manual_override> </auto_invoke>
 
 ## Routes To
 
@@ -219,7 +219,7 @@ Based on problem type, these agents can enhance documentation:
 ### Specific Domain Experts
 - **performance-oracle**: Analyzes performance_issue category solutions
 - **security-sentinel**: Reviews security_issue solutions for vulnerabilities
-- **cora-test-reviewer**: Creates test cases for prevention strategies
+- **test-reviewer**: Creates test cases for prevention strategies
 - **data-integrity-guardian**: Reviews database_issue migrations and queries
 
 ### Enhancement & Documentation
@@ -229,10 +229,10 @@ Based on problem type, these agents can enhance documentation:
 
 ### When to Invoke
 - **Auto-triggered** (optional): Agents can run post-documentation for enhancement
-- **Manual trigger**: User can invoke agents after /prompts:workflows-compound completes for deeper review
+- **Manual trigger**: User can invoke agents after /workflows-compound completes for deeper review
 - **Customize agents**: Edit `compound-engineering.local.md` or invoke the `setup` skill to configure which review agents are used across all workflows
 
 ## Related Commands
 
-- `/prompts:research [topic]` - Deep investigation (searches docs/solutions/ for patterns)
-- `/prompts:workflows-plan` - Planning workflow (references documented solutions)
+- `/research [topic]` - Deep investigation (searches docs/solutions/ for patterns)
+- `/workflows-plan` - Planning workflow (references documented solutions)

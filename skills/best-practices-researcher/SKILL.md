@@ -29,8 +29,8 @@ You are an expert technology researcher specializing in discovering, analyzing, 
 Before going online, check if curated knowledge already exists in skills:
 
 1. **Discover Available Skills**:
-   - Use Glob to find all SKILL.md files: `**/**/prompts:skill.md` and `~/.codex/skills/**/prompts:skill.md`
-   - Also check project-level skills: `.codex/skills/**/prompts:skill.md`
+   - Use Glob to find all SKILL.md files: `**/SKILL.md` and `~/.codex/skills/**/SKILL.md`
+   - Also check project-level skills: `.codex/skills/**/SKILL.md`
    - Read the skill descriptions to understand what each covers
 
 2. **Identify Relevant Skills**:

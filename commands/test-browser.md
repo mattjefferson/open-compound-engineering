@@ -109,8 +109,8 @@ Map changed files to testable routes:
 
 | File Pattern | Route(s) |
 |-------------|----------|
-| `app/views/users/*` | `/prompts:users`, `/users/:id`, `/users/new` |
-| `app/controllers/settings_controller.rb` | `/prompts:settings` |
+| `app/views/users/*` | `/users`, `/users/:id`, `/users/new` |
+| `app/controllers/settings_controller.rb` | `/settings` |
 | `app/javascript/controllers/*_controller.js` | Pages using that Stimulus controller |
 | `app/components/*_component.rb` | Pages rendering that component |
 | `app/views/layouts/*` | All pages (test homepage at minimum) |
@@ -130,7 +130,7 @@ Build a list of URLs to test based on the mapping.
 Before testing, verify the local server is accessible:
 
 ```bash
-agent-browser open http://prompts:localhost-3000
+agent-browser open http://localhost:3000
 agent-browser snapshot -i
 ```
 
@@ -142,7 +142,7 @@ Please start your development server:
 - Rails: `bin/dev` or `rails server`
 - Node/Next.js: `npm run dev`
 
-Then run `/prompts:test-browser` again.
+Then run `/test-browser` again.
 ```
 
 </check_server>
@@ -264,16 +264,16 @@ After all tests complete, present summary:
 ## Browser Test Results
 
 **Test Scope:** PR #[number] / [branch name]
-**Server:** http://prompts:localhost-3000
+**Server:** http://localhost:3000
 
 ### Pages Tested: [count]
 
 | Route | Status | Notes |
 |-------|--------|-------|
-| `/prompts:users` | Pass | |
-| `/prompts:settings` | Pass | |
-| `/prompts:dashboard` | Fail | Console error: [msg] |
-| `/prompts:checkout` | Skip | Requires payment credentials |
+| `/users` | Pass | |
+| `/settings` | Pass | |
+| `/dashboard` | Fail | Console error: [msg] |
+| `/checkout` | Skip | Requires payment credentials |
 
 ### Console Errors: [count]
 - [List any errors found]
@@ -283,7 +283,7 @@ After all tests complete, present summary:
 - Email delivery: Confirmed
 
 ### Failures: [count]
-- `/prompts:dashboard` - [issue description]
+- `/dashboard` - [issue description]
 
 ### Created Todos: [count]
 - `005-pending-p1-browser-test-dashboard-error.md`
@@ -297,13 +297,13 @@ After all tests complete, present summary:
 
 ```bash
 # Test current branch changes
-/prompts:test-browser
+/test-browser
 
 # Test specific PR
-/prompts:test-browser 847
+/test-browser 847
 
 # Test specific branch
-/prompts:test-browser feature/new-dashboard
+/test-browser feature/new-dashboard
 ```
 
 ## agent-browser CLI Reference

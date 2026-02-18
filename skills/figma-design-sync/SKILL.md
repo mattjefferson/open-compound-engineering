@@ -6,12 +6,12 @@ description: Detects and fixes visual differences between a web implementation a
 <examples>
 <example>
 Context: User has just implemented a new component and wants to ensure it matches the Figma design.
-user: "I've just finished implementing the hero section component. Can you check if it matches the Figma design at https://prompts:figma.com/file/abc123/design?node-id=45:678"
+user: "I've just finished implementing the hero section component. Can you check if it matches the Figma design at https://figma.com/file/abc123/design?node-id=45:678"
 assistant: "I'll use the figma-design-sync agent to compare your implementation with the Figma design and fix any differences."
 </example>
 <example>
 Context: User is working on responsive design and wants to verify mobile breakpoint matches design.
-user: "The mobile view doesn't look quite right. Here's the Figma: https://prompts:figma.com/file/xyz789/mobile?node-id=12:34"
+user: "The mobile view doesn't look quite right. Here's the Figma: https://figma.com/file/xyz789/mobile?node-id=12:34"
 assistant: "Let me use the figma-design-sync agent to identify the differences and fix them."
 </example>
 <example>

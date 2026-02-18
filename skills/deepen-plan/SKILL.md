@@ -12,7 +12,7 @@ description: Enhance a plan with parallel research agents for each section to ad
 
 **Note: The current year is 2026.** Use this when searching for recent documentation and best practices.
 
-This command takes an existing plan (from `/prompts:workflows-plan`) and enhances each section with parallel research agents. Each major element gets its own dedicated research sub-agent to find:
+This command takes an existing plan (from `/workflows-plan`) and enhances each section with parallel research agents. Each major element gets its own dedicated research sub-agent to find:
 - Best practices and industry patterns
 - Performance optimizations
 - UI/UX improvements (if applicable)
@@ -88,7 +88,7 @@ cat ~/.codex/plugins/installed_plugins.json
 
 ```bash
 # For each skill directory found, read its documentation
-cat [skill-path]/prompts:skill.md
+cat [skill-path]/SKILL.md
 ```
 
 **Step 3: Match skills to plan content**
@@ -108,7 +108,7 @@ Task general-purpose: "You have the [skill-name] skill available at [skill-path]
 
 YOUR JOB: Use this skill on the plan.
 
-1. Read the skill: cat [skill-path]/prompts:skill.md
+1. Read the skill: cat [skill-path]/SKILL.md
 2. Follow the skill's instructions exactly
 3. Apply the skill to this content:
 
@@ -135,7 +135,7 @@ The skill tells you what to do - follow it. Execute the skill completely."
 ```
 Task general-purpose: "Use the frontend-design skill. Read SKILL.md and apply it to: [UI sections of plan]"
 
-Task general-purpose: "Use the agent-native-architecture skill at ~/.codex/plugins/.../prompts:agent-native-architecture. Read SKILL.md and apply it to: [agent/tool sections of plan]"
+Task general-purpose: "Use the agent-native-architecture skill at ~/.codex/plugins/.../agent-native-architecture. Read SKILL.md and apply it to: [agent/tool sections of plan]"
 
 Task general-purpose: "Use the security-patterns skill at ~/.codex/skills/security-patterns. Read SKILL.md and apply it to: [full plan]"
 ```
@@ -145,13 +145,13 @@ Task general-purpose: "Use the security-patterns skill at ~/.codex/skills/securi
 ### 3. Discover and Apply Learnings/Solutions
 
 <thinking>
-Check for documented learnings from /prompts:workflows-compound. These are solved problems stored as markdown files. Spawn a sub-agent for each learning to check if it's relevant.
+Check for documented learnings from /workflows-compound. These are solved problems stored as markdown files. Spawn a sub-agent for each learning to check if it's relevant.
 </thinking>
 
 **LEARNINGS LOCATION - Check these exact folders:**
 
 ```
-docs/solutions/           <-- PRIMARY: Project-level learnings (created by /prompts:workflows-compound)
+docs/solutions/           <-- PRIMARY: Project-level learnings (created by /workflows-compound)
 ├── performance-issues/
 │   └── *.md
 ├── debugging-patterns/
@@ -311,7 +311,7 @@ find .codex/agents -name "*.md" 2>/dev/null
 find ~/.codex/agents -name "*.md" 2>/dev/null
 
 # 3. compound-engineering plugin agents (all subdirectories)
-find ~/.codex/plugins/cache/*/compound-engineering/*/prompts:agents -name "*.md" 2>/dev/null
+find ~/.codex/plugins/cache/*/compound-engineering/*/agents -name "*.md" 2>/dev/null
 
 # 4. ALL other installed plugins - check every plugin for agents
 find ~/.codex/plugins/cache -path "*/agents/*.md" 2>/dev/null
@@ -370,7 +370,7 @@ Wait for ALL parallel agents to complete - skills, research agents, review agent
 **Collect outputs from ALL sources:**
 
 1. **Skill-based sub-agents** - Each skill's full output (code examples, patterns, recommendations)
-2. **Learnings/Solutions sub-agents** - Relevant documented learnings from /prompts:workflows-compound
+2. **Learnings/Solutions sub-agents** - Relevant documented learnings from /workflows-compound
 3. **Research agents** - Best practices, documentation, real-world examples
 4. **Review agents** - All feedback from every reviewer (architecture, security, performance, simplicity, etc.)
 5. **Context7 queries** - Framework documentation and patterns
@@ -480,28 +480,28 @@ After writing the enhanced plan, use the **AskUserQuestion tool** to present the
 
 **Options:**
 1. **View diff** - Show what was added/changed
-2. **Run `/prompts:technical_review`** - Get feedback from reviewers on enhanced plan
-3. **Start `/prompts:workflows-work`** - Begin implementing this enhanced plan
+2. **Run `/technical_review`** - Get feedback from reviewers on enhanced plan
+3. **Start `/workflows-work`** - Begin implementing this enhanced plan
 4. **Deepen further** - Run another round of research on specific sections
 5. **Revert** - Restore original plan (if backup exists)
 
 Based on selection:
 - **View diff** → Run `git diff [plan_path]` or show before/after
-- **`/prompts:technical_review`** → Call the /prompts:technical_review command with the plan file path
-- **`/prompts:workflows-work`** → Call the /prompts:workflows-work command with the plan file path
+- **`/technical_review`** → Call the /technical_review command with the plan file path
+- **`/workflows-work`** → Call the /workflows-work command with the plan file path
 - **Deepen further** → Ask which sections need more research, then re-run those agents
 - **Revert** → Restore from git or backup
 
 ## Example Enhancement
 
-**Before (from /prompts:workflows-plan):**
+**Before (from /workflows-plan):**
 ```markdown
 ## Technical Approach
 
 Use React Query for data fetching with optimistic updates.
 ```
 
-**After (from /prompts:workflows-deepen-plan):**
+**After (from /workflows-deepen-plan):**
 ```markdown
 ## Technical Approach
 
@@ -539,8 +539,8 @@ const queryClient = new QueryClient({
 - Consider offline support with `persistQueryClient`
 
 **References:**
-- https://prompts:tanstack.com/query/latest/docs/react/guides/optimistic-updates
-- https://prompts:tkdodo.eu/blog/practical-react-query
+- https://tanstack.com/query/latest/docs/react/guides/optimistic-updates
+- https://tkdodo.eu/blog/practical-react-query
 ```
 
 NEVER CODE! Just research and enhance the plan.

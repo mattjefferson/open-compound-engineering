@@ -54,7 +54,7 @@ See the `agent-browser` skill for detailed usage.
 
 Parse the input:
 - First argument: PR number or "current" (defaults to current branch's PR)
-- Second argument: Base URL (defaults to `http://prompts:localhost-3000`)
+- Second argument: Base URL (defaults to `http://localhost:3000`)
 
 ```bash
 # Get PR number for current branch if needed
@@ -81,8 +81,8 @@ gh pr view [number] --json files -q '.files[].path'
 
 | File Pattern | Route(s) |
 |-------------|----------|
-| `app/views/users/*` | `/prompts:users`, `/users/:id`, `/users/new` |
-| `app/controllers/settings_controller.rb` | `/prompts:settings` |
+| `app/views/users/*` | `/users`, `/users/:id`, `/users/new` |
+| `app/controllers/settings_controller.rb` | `/settings` |
 | `app/javascript/controllers/*_controller.js` | Pages using that Stimulus controller |
 | `app/components/*_component.rb` | Pages rendering that component |
 
@@ -225,8 +225,8 @@ rclone ls r2:kieran-claude/pr-videos/pr-[number]/
 
 Public URLs (R2 with public access):
 ```
-Video: https://prompts:pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-[number]/prompts:feature-demo.mp4
-Preview: https://prompts:pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-[number]/prompts:feature-demo-preview.gif
+Video: https://pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-[number]/feature-demo.mp4
+Preview: https://pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-[number]/feature-demo-preview.gif
 ```
 
 </upload_video>
@@ -256,7 +256,7 @@ If the PR already has a video section, replace it. Otherwise, append:
 
 Example:
 ```markdown
-[![Feature Demo](https://prompts:pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-137/feature-demo-preview.gif)](https://prompts:pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-137/feature-demo.mp4)
+[![Feature Demo](https://pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-137/feature-demo-preview.gif)](https://pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-137/feature-demo.mp4)
 ```
 
 **Update the PR:**
@@ -324,16 +324,16 @@ Present completion summary:
 
 ```bash
 # Record video for current branch's PR
-/prompts:feature-video
+/feature-video
 
 # Record video for specific PR
-/prompts:feature-video 847
+/feature-video 847
 
 # Record with custom base URL
-/prompts:feature-video 847 http://prompts:localhost-5000
+/feature-video 847 http://localhost:5000
 
 # Record for staging environment
-/prompts:feature-video current https://prompts:staging.example.com
+/feature-video current https://staging.example.com
 ```
 
 ## Tips
