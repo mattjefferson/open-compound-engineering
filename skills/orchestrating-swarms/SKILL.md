@@ -390,9 +390,9 @@ Task({
 ### Design Agents
 ```javascript
 Task({
-  subagent_type: "compound-engineering:design:figma-design-sync",
-  description: "Sync with Figma",
-  prompt: "Compare implementation with Figma design at [URL]"
+  subagent_type: "design-implementation-reviewer",
+  description: "Review implementation against design",
+  prompt: "Compare implementation with design specs at [URL]"
 })
 ```
 

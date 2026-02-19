@@ -12,7 +12,7 @@ description: Enhance a plan with parallel research agents for each section to ad
 
 **Note: The current year is 2026.** Use this when searching for recent documentation and best practices.
 
-This command takes an existing plan (from `workflows-plan`) and enhances each section with parallel research agents. Each major element gets its own dedicated research sub-agent to find:
+This command takes an existing plan (from `workflows-plan`) and enhances each section with parallel research agents. Each major element gets its own dedicated research subagent to find:
 - Best practices and industry patterns
 - Performance optimizations
 - UI/UX improvements (if applicable)
@@ -67,19 +67,13 @@ Dynamically discover all available skills and match them to plan sections. Don't
 
 ```bash
 # 1. Project-local skills (highest priority - project-specific)
-ls .agents/skills/
+find . -maxdepth 3 -type d -name "skills" 2>/dev/null
 
-# 2. User's global skills (~/.codex/)
-ls ~/.agents/skills/
+# 2. User's global skills (known agent platforms)
+ls ~/.claude/skills/ ~/.codex/skills/ ~/.gemini/skills/ 2>/dev/null
 
-# 3. compound-engineering plugin skills
-ls ~/.codex/plugins/cache/*/compound-engineering/*/skills/
-
-# 4. ALL other installed plugins - check every plugin for skills
-find ~/.codex/plugins/cache -type d -name "skills" 2>/dev/null
-
-# 5. Also check installed_plugins.json for all plugin locations
-cat ~/.codex/plugins/installed_plugins.json
+# 3. Installed plugin skills (Claude Code specific)
+find ~/.claude/plugins/cache -type d -name "skills" 2>/dev/null
 ```
 
 **Important:** Check EVERY source. Don't assume compound-engineering is the only plugin. Use skills from ANY installed plugin that's relevant.
@@ -96,11 +90,11 @@ cat [skill-path]/SKILL.md
 For each skill discovered:
 - Read its SKILL.md description
 - Check if any plan sections match the skill's domain
-- If there's a match, spawn a sub-agent to apply that skill's knowledge
+- If there's a match, spawn a subagent to apply that skill's knowledge
 
-**Step 4: Spawn a sub-agent for EVERY matched skill**
+**Step 4: Spawn a subagent for EVERY matched skill**
 
-**CRITICAL: For EACH skill that matches, spawn a separate sub-agent and instruct it to USE that skill.**
+**CRITICAL: For EACH skill that matches, spawn a separate subagent and instruct it to USE that skill.**
 
 For each matched skill:
 ```
@@ -119,13 +113,13 @@ YOUR JOB: Use this skill on the plan.
 The skill tells you what to do - follow it. Execute the skill completely."
 ```
 
-**Spawn ALL skill sub-agents in PARALLEL:**
-- 1 sub-agent per matched skill
-- Each sub-agent reads and uses its assigned skill
+**Spawn ALL skill subagents in PARALLEL:**
+- 1 subagent per matched skill
+- Each subagent reads and uses its assigned skill
 - All run simultaneously
-- 10, 20, 30 skill sub-agents is fine
+- 10, 20, 30 skill subagents is fine
 
-**Each sub-agent:**
+**Each subagent:**
 1. Reads its skill's SKILL.md
 2. Follows the skill's workflow/instructions
 3. Applies the skill to the plan
@@ -133,19 +127,19 @@ The skill tells you what to do - follow it. Execute the skill completely."
 
 **Example spawns:**
 ```
-Task general-purpose: "Use the frontend-design skill. Read SKILL.md and apply it to: [UI sections of plan]"
+"Use the frontend-design skill. Read SKILL.md and apply it to: [UI sections of plan]"
 
-Task general-purpose: "Use the agent-native-architecture skill at ~/.codex/plugins/.../agent-native-architecture. Read SKILL.md and apply it to: [agent/tool sections of plan]"
+"Use the agent-native-architecture skill at ~/.codex/plugins/.../agent-native-architecture. Read SKILL.md and apply it to: [agent/tool sections of plan]"
 
-Task general-purpose: "Use the security-patterns skill at ~/.agents/skills/security-patterns. Read SKILL.md and apply it to: [full plan]"
+"Use the security-patterns skill at ~/.agents/skills/security-patterns. Read SKILL.md and apply it to: [full plan]"
 ```
 
-**No limit on skill sub-agents. Spawn one for every skill that could possibly be relevant.**
+**No limit on skill subagents. Spawn one for every skill that could possibly be relevant.**
 
 ### 3. Discover and Apply Learnings/Solutions
 
 <thinking>
-Check for documented learnings from `workflows-compound`. These are solved problems stored as markdown files. Spawn a sub-agent for each learning to check if it's relevant.
+Check for documented learnings from `workflows-compound`. These are solved problems stored as markdown files. Spawn a subagent for each learning to check if it's relevant.
 </thinking>
 
 **LEARNINGS LOCATION - Check these exact folders:**
@@ -175,8 +169,8 @@ Run these commands to get every learning file:
 find docs/solutions -name "*.md" -type f 2>/dev/null
 
 # If docs/solutions doesn't exist, check alternate locations:
-find .codex/docs -name "*.md" -type f 2>/dev/null
-find ~/.codex/docs -name "*.md" -type f 2>/dev/null
+find .claude/docs .codex/docs .gemini/docs -name "*.md" -type f 2>/dev/null
+find ~/.claude/docs ~/.codex/docs ~/.gemini/docs -name "*.md" -type f 2>/dev/null
 ```
 
 **Step 2: Read frontmatter of each learning to filter**
@@ -201,7 +195,7 @@ root_cause: "Missing includes on association"
 head -20 docs/solutions/**/*.md
 ```
 
-**Step 3: Filter - only spawn sub-agents for LIKELY relevant learnings**
+**Step 3: Filter - only spawn subagents for LIKELY relevant learnings**
 
 Compare each learning's frontmatter against the plan:
 - `tags:` - Do any tags match technologies/patterns in the plan?
@@ -214,12 +208,12 @@ Compare each learning's frontmatter against the plan:
 - Plan is Python → skip `rails-specific/` learnings
 - Plan has no auth → skip `authentication-issues/` learnings
 
-**SPAWN sub-agents for learnings that MIGHT apply:**
+**SPAWN subagents for learnings that MIGHT apply:**
 - Any tag overlap with plan technologies
 - Same category as plan domain
 - Similar patterns or concerns
 
-**Step 4: Spawn sub-agents for filtered learnings**
+**Step 4: Spawn subagents for filtered learnings**
 
 For each learning that passes the filter:
 
@@ -261,14 +255,14 @@ docs/solutions/frontend-issues/stimulus-race-condition.md    # plan is API, not 
 docs/solutions/authentication-issues/jwt-expiry.md           # plan has no auth
 ```
 
-**Spawn sub-agents in PARALLEL for all filtered learnings.**
+**Spawn subagents in PARALLEL for all filtered learnings.**
 
 **These learnings are institutional knowledge - applying them prevents repeating past mistakes.**
 
 ### 4. Launch Per-Section Research Agents
 
 <thinking>
-For each major section in the plan, spawn dedicated sub-agents to research improvements. Use the Explore agent type for open-ended research.
+For each major section in the plan, spawn dedicated subagents to research improvements. Use the Explore agent type for open-ended research.
 </thinking>
 
 **For each identified section, launch parallel research:**
@@ -289,7 +283,7 @@ For any technologies/frameworks mentioned in the plan, query Context7 for releva
 
 **Use WebSearch for current best practices:**
 
-Search for recent (2024-2026) articles, blog posts, and documentation on topics in the plan.
+Search for recent (2025-2026) articles, blog posts, and documentation on topics in the plan.
 
 ### 5. Discover and Run ALL Review Agents
 
@@ -301,30 +295,16 @@ Dynamically discover every available agent and run them ALL against the plan. Do
 
 ```bash
 # 1. Project-local agents (highest priority - project-specific)
-find .codex/agents -name "*.md" 2>/dev/null
+find .claude/agents -name "*.md" 2>/dev/null
 
-# 2. User's global agents (~/.codex/)
-find ~/.codex/agents -name "*.md" 2>/dev/null
+# 2. User's global agents
+find ~/.claude/agents -name "*.md" 2>/dev/null
 
-# 3. compound-engineering plugin agents (all subdirectories)
-find ~/.codex/plugins/cache/*/compound-engineering/*/agents -name "*.md" 2>/dev/null
-
-# 4. ALL other installed plugins - check every plugin for agents
-find ~/.codex/plugins/cache -path "*/agents/*.md" 2>/dev/null
-
-# 5. Check installed_plugins.json to find all plugin locations
-cat ~/.codex/plugins/installed_plugins.json
-
-# 6. For local plugins (isLocal: true), check their source directories
-# Parse installed_plugins.json and find local plugin paths
+# 3. Installed plugin agents (Claude Code specific)
+find ~/.claude/plugins/cache -path "*/agents/*.md" 2>/dev/null
 ```
 
-**Important:** Check EVERY source. Include agents from:
-- Project `.codex/agents/`
-- User's `~/.codex/agents/`
-- compound-engineering plugin (but SKIP workflow/ agents - only use review/, research/, design/, docs/)
-- ALL other installed plugins (agent-sdk-dev, frontend-design, etc.)
-- Any local plugins
+**Important:** Skip workflow orchestrator agents — only use review, research, design, and docs agents.
 
 **For compound-engineering plugin specifically:**
 - USE: `agents/review/*` (all reviewers)
@@ -365,8 +345,8 @@ Wait for ALL parallel agents to complete - skills, research agents, review agent
 
 **Collect outputs from ALL sources:**
 
-1. **Skill-based sub-agents** - Each skill's full output (code examples, patterns, recommendations)
-2. **Learnings/Solutions sub-agents** - Relevant documented learnings from `workflows-compound`
+1. **Skill-based subagents** - Each skill's full output (code examples, patterns, recommendations)
+2. **Learnings/Solutions subagents** - Relevant documented learnings from `workflows-compound`
 3. **Research agents** - Best practices, documentation, real-world examples
 4. **Review agents** - All feedback from every reviewer (architecture, security, performance, simplicity, etc.)
 5. **Context7 queries** - Framework documentation and patterns
@@ -497,7 +477,7 @@ Based on selection:
 Use React Query for data fetching with optimistic updates.
 ```
 
-**After (from `workflows-deepen-plan`):**
+**After (from `deepen-plan`):**
 ```markdown
 ## Technical Approach
 
