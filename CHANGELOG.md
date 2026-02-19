@@ -7,11 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added `AGENTS.md` as the source-of-truth agent instructions, plus `CLAUDE.md` as a compatibility pointer
+- Added `/deepen-plan` as an option in `workflows-plan` post-planning menu
 
 ### Fixed
 
 - Made `workflows-brainstorm` and `workflows-plan` Codex-friendly (removed Claude-only tool wording, replaced zsh-unsafe globs with `find`, and documented `mkdir -p docs/{brainstorms,plans}` for target repos)
 - Made `deepen-plan` subagent/parallel instructions Codex-friendly (replaced Task/Teammate pseudo-APIs with “Subagent prompt” templates and simple Codex mapping notes)
+- Cleaned up `spec-flow-analyzer` skill reference in `workflows-plan`
 
 ### Changed
 
