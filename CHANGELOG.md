@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.1] - 2026-02-18
+
+### Fixed
+
+- Replaced all `${CLAUDE_PLUGIN_ROOT}` paths in `git-worktree` with relative `scripts/worktree-manager.sh` (21 occurrences)
+- Replaced `.agents/skills/` paths in `workflows-review` and `best-practices-researcher` with correct relative/discovery paths
+- Fixed `workflows-review` section numbering (was 1, 4, 6, 4, 5, 7 → now sequential 1–6)
+- Fixed broken code fence around summary report template in `workflows-review`
+- Fixed truncated sentence in `workflows-review` task list
+- Removed stray closing code fences in `workflows-review`
+- Promoted orphaned "Key principles" text to proper heading in `spec-flow-analyzer`
+
+### Changed
+
+- Normalized `sub-agents`/`sub-agent` → `subagents`/`subagent` in `workflows-review`
+
 ## [0.3.0] - 2026-02-18
 
 ### Added

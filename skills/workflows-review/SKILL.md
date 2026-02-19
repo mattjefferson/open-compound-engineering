@@ -61,33 +61,33 @@ The following paths are compound-engineering pipeline artifacts and must never b
 If a review agent flags any file in these directories for cleanup or removal, discard that finding during synthesis. Do not create a todo for it.
 </protected_artifacts>
 
-#### Load Review Agents
+#### Load Review subagents
 
 Read `compound-engineering.local.md` in the project root. If found, use `review_agents` from YAML frontmatter. If the markdown body contains review context, pass it to each agent as additional instructions.
 
 If no settings file exists, invoke the `setup` skill to create one. Then read the newly created file and continue.
 
-#### Parallel Agents to review the PR:
+#### Parallel subagents to review the PR:
 
-<parallel_tasks>
+<parallel_subagents>
 
-Run all configured review agents in parallel using Task tool. For each agent in the `review_agents` list:
+Run all configured review subagents in parallel. For each subagent in the `review_agents` list:
 
 ```
-Task {agent-name}(PR content + review context from settings body)
+{agent-name}(PR content + review context from settings body)
 ```
 
 Additionally, always run these regardless of settings:
 - Use the `agent-native-reviewer` skill to: PR content - Verify new features are agent-accessible
 - Use the `learnings-researcher` skill to: PR content - Search docs/solutions/ for past issues related to this PR's modules and patterns
 
-</parallel_tasks>
+</parallel_subagents>
 
-#### Conditional Agents (Run if applicable):
+#### Conditional subagents (Run if applicable):
 
-<conditional_agents>
+<conditional_subagents>
 
-These agents are run ONLY when the PR matches specific criteria. Check the PR files list to determine if they apply:
+These subagents are run ONLY when the PR matches specific criteria. Check the PR files list to determine if they apply:
 
 **MIGRATIONS: If PR contains database migrations, schema.rb, or data backfills:**
 
@@ -104,7 +104,7 @@ These agents are run ONLY when the PR matches specific criteria. Check the PR fi
 - `data-migration-expert`: Verifies hard-coded mappings match production reality (prevents swapped IDs), checks for orphaned associations, validates dual-write patterns
 - `deployment-verification-agent`: Produces executable pre/post-deploy checklists with SQL queries, rollback procedures, and monitoring plans
 
-</conditional_agents>
+</conditional_subagents>
 
 ### 4. Ultra-Thinking Deep Dive Phases
 
@@ -116,7 +116,9 @@ Complete system context map with component interactions
 
 #### Phase 3: Stakeholder Perspective Analysis
 
-<thinking_prompt> Put yourself in each stakeholder's shoes. What matters to them? What are their pain points? </thinking_prompt>
+<thinking_prompt> 
+Put yourself in each stakeholder's shoes. What matters to them? What are their pain points? 
+</thinking_prompt>
 
 <stakeholder_perspectives>
 
@@ -203,11 +205,11 @@ Complete system context map with component interactions
 
 ### 4. Simplification and Minimalism Review
 
-Run the Task code-simplicity-reviewer() to see if we can simplify the code.
+Run the `code-simplicity-reviewer` to see if we can simplify the code.
 
 ### 5. Findings Synthesis and Todo Creation Using file-todos Skill
 
-<critical_requirement> ALL findings MUST be stored in the todos/ directory using the file-todos skill. Create todo files immediately after synthesis - do NOT present findings for user approval first. Use the skill for structured todo management. </critical_requirement>
+<critical_requirement> ALL findings MUST be stored in the todos/ directory using the `file-todos` skill. Create todo files immediately after synthesis - do NOT present findings for user approval first. Use the skill for structured todo management. </critical_requirement>
 
 #### Step 1: Synthesize All Findings
 
@@ -230,7 +232,7 @@ Remove duplicates, prioritize by severity and impact.
 
 #### Step 2: Create Todo Files Using file-todos Skill
 
-<critical_instruction> Use the file-todos skill to create todo files for ALL findings immediately. Do NOT present findings one-by-one asking for user approval. Create all todo files in parallel using the skill, then summarize results to user. </critical_instruction>
+<critical_instruction> Use the `file-todos` skill to create todo files for ALL findings immediately. Do NOT present findings one-by-one asking for user approval. Create all todo files in parallel using the skill, then summarize results to user. </critical_instruction>
 
 **Implementation Options:**
 
@@ -241,17 +243,17 @@ Remove duplicates, prioritize by severity and impact.
 - Use standard template from `skills/file-todos/assets/todo-template.md`
 - Follow naming convention: `{issue_id}-pending-{priority}-{description}.md`
 
-**Option B: Sub-Agents in Parallel (Recommended for Scale)** For large PRs with 15+ findings, use sub-agents to create finding files in parallel:
+**Option B: Subagents in Parallel (Recommended for Scale)** For large PRs with 15+ findings, use subagents to create finding files in parallel:
 
 ```bash
-# Launch multiple finding-creator agents in parallel
-Task() - Create todos for first finding
-Task() - Create todos for second finding
-Task() - Create todos for third finding
-etc. for each finding.
+# Launch multiple subagents in parallel
+- Create todos for first finding
+- Create todos for second finding
+- Create todos for third finding
+- etc. for each finding.
 ```
 
-Sub-agents can:
+Subagents can:
 
 - Process multiple findings simultaneously
 - Write detailed todo files with all sections filled
@@ -264,11 +266,11 @@ Sub-agents can:
 
 1. Synthesize all findings into categories (P1/P2/P3)
 2. Group findings by severity
-3. Launch 3 parallel sub-agents (one per severity level)
-4. Each sub-agent creates its batch of todos using the file-todos skill
+3. Launch 3 parallel subagents (one per severity level)
+4. Each subagent creates its batch of todos using the file-todos skill
 5. Consolidate results and present summary
 
-**Process (Using file-todos Skill):**
+**Process (Using `file-todos` Skill):**
 
 1. For each finding:
 
@@ -306,7 +308,7 @@ Sub-agents can:
    004-pending-p3-unused-parameter.md
    ```
 
-5. Follow template structure from file-todos skill: `skills/file-todos/assets/todo-template.md`
+5. Follow template structure from `file-todos` skill: `skills/file-todos/assets/todo-template.md`
 
 **Todo File Structure (from template):**
 

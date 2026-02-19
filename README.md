@@ -27,12 +27,12 @@ I really enjoy using the Compound Engineering system. Since I wanted to use it w
 
 ## What's Included
 
-**9 commands** and **47 skills** covering:
+**9 commands** and **46 skills** covering:
 
 - **Workflows** — brainstorm, plan, work, review, compound (document learnings)
 - **Research** — best practices, framework docs, repo analysis, git history, learnings
 - **Review** — architecture, code simplicity, data integrity, performance, security, patterns, agent-native
-- **Design** — frontend design, Figma sync, design iteration, implementation review
+- **Design** — frontend design, design iteration, implementation review
 - **Tooling** — browser automation, git worktree, file todos, triage, deployment verification
 - **Content** — image generation, feature video walkthroughs
 
