@@ -10,7 +10,7 @@ I really enjoy using the Compound Engineering system. Since I wanted to use it w
 
 - **Artifact compatible** — Produce the same output artifacts (plans, solutions, todos, brainstorms) as the original, so teams can mix and match
 - **Trim out extras** — Clean out extra skills, etc. that are not needed by the core workflow
-- **Agent agnostic** — Focus on artifacts that apply across agents, rather than being Claude Code specific. For example, use AGENTS.md instead of CLAUDE.md
+- **Agent agnostic** — Focus on artifacts that apply across agents, rather than being Claude Code specific. `AGENTS.md` is the source of truth; `CLAUDE.md` is a compatibility pointer.
 
 ## Install
 
@@ -37,6 +37,10 @@ I really enjoy using the Compound Engineering system. Since I wanted to use it w
 - **Content** — image generation, feature video walkthroughs
 
 See [`docs/mapping.md`](docs/mapping.md) for full provenance of every command and skill.
+
+## Notes
+
+- `workflows-work` includes a "Swarm Mode" section that is Claude Code specific; Codex can approximate it via parallel subagents but does not implement the Teammate/Task runtime.
 
 ## Structure
 

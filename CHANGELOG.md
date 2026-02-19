@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.2] - 2026-02-19
+
+### Added
+
+- Added `AGENTS.md` as the source-of-truth agent instructions, plus `CLAUDE.md` as a compatibility pointer
+
+### Fixed
+
+- Made `workflows-brainstorm` and `workflows-plan` Codex-friendly (removed Claude-only tool wording, replaced zsh-unsafe globs with `find`, and documented `mkdir -p docs/{brainstorms,plans}` for target repos)
+- Made `deepen-plan` subagent/parallel instructions Codex-friendly (replaced Task/Teammate pseudo-APIs with “Subagent prompt” templates and simple Codex mapping notes)
+
+### Changed
+
+- Clarified that `workflows-work` Swarm Mode is Claude Code only, with Codex approximation guidance
+
 ## [0.3.1] - 2026-02-18
 
 ### Fixed
