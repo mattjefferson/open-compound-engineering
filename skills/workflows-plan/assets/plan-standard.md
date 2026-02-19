@@ -39,6 +39,14 @@ date: YYYY-MM-DD
 
 [What could block or complicate this]
 
+## System-Wide Impact
+
+- **Interaction graph:** Which other modules, services, or callbacks does this touch?
+- **Error propagation:** How do errors flow out of this change?
+- **State lifecycle:** Does this create, modify, or delete persistent state that other code depends on?
+- **API surface parity:** Do parallel interfaces (API, CLI, UI, DSL) need the same update?
+- **Integration test scenarios:** What cross-layer scenario would catch a regression?
+
 ## References & Research
 
 - Similar implementations: [file_path:line_number]

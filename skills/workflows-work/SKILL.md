@@ -95,6 +95,7 @@ This command takes a work document (plan, specification, or todo file) and execu
      - Implement following existing conventions
      - Write tests for new functionality
      - Run tests after changes
+     - Run System-Wide Test Check (see below)
      - Mark task as completed in tasks
      - Mark off the corresponding checkbox in the plan file ([ ] → [x])
      - Evaluate for incremental commit (see below)
@@ -145,8 +146,25 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Don't wait until the end to test
    - Fix failures immediately
    - Add new tests for new functionality
+   - Unit tests with mocks prove logic in isolation. Integration tests with real objects prove the layers work together.
 
-5. **Track Progress**
+5. **System-Wide Test Check**
+
+   Before marking a task complete, run through this checklist to catch cross-cutting risks:
+
+   | Question | Investigation Step |
+   |----------|--------------------|
+   | What callbacks, middleware, or observers fire when this runs? | Trace the call chain from entry point through all registered hooks |
+   | Do existing tests exercise the real chain or just mocked isolation? | Grep for mocks of the class/module you changed; flag any mock-only coverage |
+   | Can a failure here leave orphaned state (rows, jobs, cache entries)? | Identify every side-effect write; confirm rollback or cleanup exists |
+   | What other interfaces (API, CLI, DSL, UI) invoke the same logic? | Search for all call-sites; verify each still works after your change |
+   | Do error-handling strategies (retry, raise, swallow) align across layers? | Map the error flow from origin to user-facing response |
+
+   **When to skip:** Leaf-node changes like typo fixes, copy edits, or standalone helpers with no callbacks.
+
+   **When it matters:** The change touches a class with callbacks, error handling, or multiple interfaces.
+
+6. **Track Progress**
    - Keep tasks updated as you complete tasks
    - Note any blockers or unexpected discoveries
    - Create new tasks if scope expands

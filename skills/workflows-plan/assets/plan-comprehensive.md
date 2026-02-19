@@ -79,6 +79,28 @@ date: YYYY-MM-DD
 
 [Comprehensive risk assessment]
 
+## System-Wide Impact
+
+### Interaction Graph
+
+Trace every module, service, callback, middleware, or observer this change touches. Show direction of dependency.
+
+### Error & Failure Propagation
+
+List error classes that cross module boundaries. Note retry/timeout conflicts between layers.
+
+### State Lifecycle Risks
+
+Identify orphaned rows, stale caches, or dangling jobs this change could create. Document cleanup responsibility for each.
+
+### API Surface Parity
+
+List every class, DSL, endpoint, or UI form that exposes the same concept. Note which need updating alongside this change.
+
+### Integration Test Scenarios
+
+Define 3-5 cross-layer scenarios. For each: trigger, expected chain of events, and assertion.
+
 ## Resource Requirements
 
 [Team, time, infrastructure needs]

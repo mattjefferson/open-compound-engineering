@@ -187,6 +187,7 @@ Select how comprehensive you want the issue to be, simpler is mostly better.
 - Success metrics
 - Dependencies and risks
 - Basic implementation suggestions
+- System-wide impact analysis
 
 **Structure:** See `assets/plan-standard.md` for the full template.
 
@@ -202,6 +203,7 @@ Select how comprehensive you want the issue to be, simpler is mostly better.
 - Resource requirements and timeline
 - Future considerations and extensibility
 - Risk mitigation strategies
+- System-wide impact analysis
 - Documentation requirements
 
 **Structure:** See `assets/plan-comprehensive.md` for the full template.
