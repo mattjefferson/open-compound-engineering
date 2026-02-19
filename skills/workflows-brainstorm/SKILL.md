@@ -45,7 +45,7 @@ Run a quick repo scan to understand existing patterns:
 
 - Use the `repo-research-analyst` skill to: "Understand existing patterns related to: <feature_description>"
 
-Focus on: similar features, established patterns, CLAUDE.md guidance.
+Focus on: similar features, established patterns, AGENTS.md guidance.
 
 #### 1.2 Collaborative Dialogue
 

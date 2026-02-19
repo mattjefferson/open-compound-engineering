@@ -54,7 +54,7 @@ required_fields:
       - testing_framework    # Test setup, fixtures, VCR
       - documentation        # README, guides, inline docs
       - tooling              # Scripts, generators, CLI tools
-    description: "CORA component involved"
+    description: "System component involved"
 
   symptoms:
     type: array[string]

@@ -172,11 +172,11 @@ Tip: Edit the "Review Context" section to add project-specific instructions.
 Use AskUserQuestion:
 
 ```
-question: "Would you like to audit your repo's foundations? Checks CLAUDE.md quality, conventions, tech debt tracking, and more."
+question: "Would you like to audit your repo's foundations? Checks AGENTS.md quality, conventions, tech debt tracking, and more."
 header: "Foundations"
 options:
   - label: "Yes (Recommended)"
-    description: "Run tiered audit: CLAUDE.md quality, conventions, tech debt, architecture docs."
+    description: "Run tiered audit: AGENTS.md quality, conventions, tech debt, architecture docs."
   - label: "Skip"
     description: "Finish setup without auditing foundations."
 ```
@@ -203,7 +203,7 @@ options:
 If "Create all missing":
 - Invoke `compound-foundations` workflow `workflows/generate-artifacts.md`
 - Pass all missing artifacts from the audit scorecard
-- Create files immediately in `docs/` (and `CLAUDE.md` only if missing)
+- Create files immediately in `docs/` (and `AGENTS.md` only if missing)
 
 If "Choose files":
 - Invoke `compound-foundations` workflow `workflows/generate-artifacts.md`

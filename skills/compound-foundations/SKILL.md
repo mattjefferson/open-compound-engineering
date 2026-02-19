@@ -15,7 +15,7 @@ Use this skill when you need to improve the repo itself, not just ship one featu
 <essential_principles>
 ## Essential Principles
 
-1. **Maps, not manuals**: Keep `CLAUDE.md` short and navigable.
+1. **Maps, not manuals**: Keep `AGENTS.md` short and navigable.
 2. **Repo as record**: Put operational knowledge in versioned docs.
 3. **Plans as artifacts**: Track execution status in files, not memory.
 4. **Progressive disclosure**: Start broad, then go deeper by reference.
@@ -93,7 +93,7 @@ If intent is ambiguous, ask one clarifying question and continue.
 <success_criteria>
 ## Success Criteria
 
-- [ ] Core foundations are audited (`CLAUDE.md`, `docs/CONVENTIONS.md`, `docs/TECH_DEBT.md`)
+- [ ] Core foundations are audited (`AGENTS.md`, `docs/CONVENTIONS.md`, `docs/TECH_DEBT.md`)
 - [ ] Missing artifacts are created from templates when requested
 - [ ] Promotion suggestions appear when patterns recur (3+)
 - [ ] Conventions include rationale and source links

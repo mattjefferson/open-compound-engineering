@@ -240,7 +240,7 @@ Remove duplicates, prioritize by severity and impact.
 
 - Create todo files directly using Write tool
 - All findings in parallel for speed
-- Use standard template from `.codex/skills/file-todos/assets/todo-template.md`
+- Use standard template from `.agents/skills/file-todos/assets/todo-template.md`
 - Follow naming convention: `{issue_id}-pending-{priority}-{description}.md`
 
 **Option B: Sub-Agents in Parallel (Recommended for Scale)** For large PRs with 15+ findings, use sub-agents to create finding files in parallel:
@@ -288,7 +288,7 @@ Sub-agents can:
 
    The skill provides:
 
-   - Template location: `.codex/skills/file-todos/assets/todo-template.md`
+   - Template location: `.agents/skills/file-todos/assets/todo-template.md`
    - Naming convention: `{issue_id}-{status}-{priority}-{description}.md`
    - YAML frontmatter structure: status, priority, issue_id, tags, dependencies
    - All required sections: Problem Statement, Findings, Solutions, etc.
@@ -308,7 +308,7 @@ Sub-agents can:
    004-pending-p3-unused-parameter.md
    ```
 
-5. Follow template structure from file-todos skill: `.codex/skills/file-todos/assets/todo-template.md`
+5. Follow template structure from file-todos skill: `.agents/skills/file-todos/assets/todo-template.md`
 
 **Todo File Structure (from template):**
 

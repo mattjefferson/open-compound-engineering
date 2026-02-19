@@ -67,10 +67,10 @@ Dynamically discover all available skills and match them to plan sections. Don't
 
 ```bash
 # 1. Project-local skills (highest priority - project-specific)
-ls .codex/skills/
+ls .agents/skills/
 
 # 2. User's global skills (~/.codex/)
-ls ~/.codex/skills/
+ls ~/.agents/skills/
 
 # 3. compound-engineering plugin skills
 ls ~/.codex/plugins/cache/*/compound-engineering/*/skills/
@@ -137,7 +137,7 @@ Task general-purpose: "Use the frontend-design skill. Read SKILL.md and apply it
 
 Task general-purpose: "Use the agent-native-architecture skill at ~/.codex/plugins/.../agent-native-architecture. Read SKILL.md and apply it to: [agent/tool sections of plan]"
 
-Task general-purpose: "Use the security-patterns skill at ~/.codex/skills/security-patterns. Read SKILL.md and apply it to: [full plan]"
+Task general-purpose: "Use the security-patterns skill at ~/.agents/skills/security-patterns. Read SKILL.md and apply it to: [full plan]"
 ```
 
 **No limit on skill sub-agents. Spawn one for every skill that could possibly be relevant.**
