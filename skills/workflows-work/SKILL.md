@@ -334,9 +334,11 @@ This command takes a work document (plan, specification, or todo file) and execu
 
 ---
 
-## Swarm Mode (Optional)
+## Swarm Mode (Optional, Claude Code Only)
 
-For complex plans with multiple independent workstreams, enable swarm mode for parallel execution with coordinated agents.
+For complex plans with multiple independent workstreams, "swarm mode" runs coordinated agents in parallel.
+
+**Important:** This section is written for Claude Code's Teammate/Task runtime. Codex CLI does not provide Teammate/Task primitives, so treat this as conceptual guidance only. In Codex, approximate swarm mode by spawning multiple subagents in parallel (`spawn_agent`), then coordinating manually by waiting for results (`wait`) and merging outputs.
 
 ### When to Use Swarm Mode
 
@@ -351,7 +353,7 @@ For complex plans with multiple independent workstreams, enable swarm mode for p
 
 To trigger swarm execution, say:
 
-> "Make a Task list and launch an army of agent swarm subagents to build the plan"
+> "Make a task list and launch an army of swarm subagents"
 
 Or explicitly request: "Use swarm mode for this work"
 
@@ -401,6 +403,8 @@ When swarm mode is enabled, the workflow changes:
    ```
 
 See the `orchestrating-swarms` skill for detailed swarm patterns and best practices.
+
+If you are not running Claude Code, ignore Teammate/Task-specific details and stick to standard mode or manual parallel subagents.
 
 ---
 

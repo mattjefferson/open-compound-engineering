@@ -134,7 +134,7 @@ The skill tells you what to do - follow it. Execute the skill completely.
 ```
 "Use the frontend-design skill. Read SKILL.md and apply it to: [UI sections of plan]"
 
-"Use the agent-native-architecture skill at ~/.codex/plugins/.../agent-native-architecture. Read SKILL.md and apply it to: [agent/tool sections of plan]"
+"Use the agent-native-architecture skill at ~/.agents/skills/agent-native-architecture. Read SKILL.md and apply it to: [agent/tool sections of plan]"
 
 "Use the security-patterns skill at ~/.agents/skills/security-patterns. Read SKILL.md and apply it to: [full plan]"
 ```
