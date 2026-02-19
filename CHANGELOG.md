@@ -8,16 +8,22 @@ All notable changes to this project will be documented in this file.
 
 - `scripts/install.sh` for installing commands and skills to claude, codex, or gemini targets
 - Gemini target support (skills only to `~/.gemini/skills/`)
+- `triage` skill for categorizing and tracking findings (ported from upstream command)
 
 ### Removed
 
 - `style-editor` skill and all cross-references
+- `rclone` skill and all cross-references
+- `schema-drift-detector` skill (Ruby/Rails-specific) and cross-references
+- rclone upload steps from `feature-video` skill
 
 ### Changed
 
 - For claude target, commands that duplicate a skill are skipped (skills take precedence)
 - Fixed `resolve_pr_parallel` script paths to use relative paths instead of `${CLAUDE_PLUGIN_ROOT}`
 - Fixed `resolve_pr_parallel` directory name mismatch (hyphens → underscores)
+- Replaced `TodoWrite` references with generic task terminology across skills
+- Removed Rails-specific Todo model docs from `file-todos`
 - Removed generated `config.toml` (MCP server config)
 
 ## [0.2.0] - 2026-02-18
