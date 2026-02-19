@@ -70,9 +70,10 @@ Dynamically discover all available skills and match them to plan sections. Don't
 find . -maxdepth 3 -type d -name "skills" 2>/dev/null
 
 # 2. User's global skills (known agent platforms)
-ls ~/.claude/skills/ ~/.codex/skills/ ~/.gemini/skills/ 2>/dev/null
+ls ~/.agents/skills/ ~/.claude/skills/ ~/.codex/skills/ ~/.gemini/skills/ 2>/dev/null
 
-# 3. Installed plugin skills (Claude Code specific)
+# 3. Optional: installed plugin skills (environment-specific)
+# If your environment maintains a plugin cache, it may have additional skills here.
 find ~/.claude/plugins/cache -type d -name "skills" 2>/dev/null
 ```
 
@@ -96,9 +97,13 @@ For each skill discovered:
 
 **CRITICAL: For EACH skill that matches, spawn a separate subagent and instruct it to USE that skill.**
 
-For each matched skill:
+Codex CLI mapping: spawn one subagent per matched skill (`spawn_agent`), then `wait` for all and collect their outputs.
+
+For each matched skill, start one subagent with this prompt:
 ```
-Task general-purpose: "You have the [skill-name] skill available at [skill-path].
+Subagent prompt (skill application):
+
+You have the [skill-name] skill available at [skill-path].
 
 YOUR JOB: Use this skill on the plan.
 
@@ -110,7 +115,7 @@ YOUR JOB: Use this skill on the plan.
 
 4. Return the skill's full output
 
-The skill tells you what to do - follow it. Execute the skill completely."
+The skill tells you what to do - follow it. Execute the skill completely.
 ```
 
 **Spawn ALL skill subagents in PARALLEL:**
@@ -222,7 +227,8 @@ Compare each learning's frontmatter against the plan:
 For each learning that passes the filter:
 
 ```
-Task general-purpose: "
+Subagent prompt (learning relevance check):
+
 LEARNING FILE: [full path to .md file]
 
 1. Read this learning file completely
@@ -241,7 +247,6 @@ If relevant:
 
 If NOT relevant after deeper analysis:
 - Say 'Not applicable: [reason]'
-"
 ```
 
 **Example filtering:**
@@ -266,28 +271,30 @@ docs/solutions/authentication-issues/jwt-expiry.md           # plan has no auth
 ### 4. Launch Per-Section Research Agents
 
 <thinking>
-For each major section in the plan, spawn dedicated subagents to research improvements. Use the Explore agent type for open-ended research.
+For each major section in the plan, spawn dedicated subagents to research improvements. Prefer a research-focused agent type for open-ended work (in Codex CLI, `explorer` is a good fit).
 </thinking>
 
 **For each identified section, launch parallel research:**
 
 ```
-Task Explore: "Research best practices, patterns, and real-world examples for: [section topic].
+Subagent prompt (section research):
+
+Research best practices, patterns, and real-world examples for: [section topic].
 Find:
 - Industry standards and conventions
 - Performance considerations
 - Common pitfalls and how to avoid them
 - Documentation and tutorials
-Return concrete, actionable recommendations."
+Return concrete, actionable recommendations.
 ```
 
-**Also use Context7 MCP for framework documentation:**
+**Also use framework documentation tools if available:**
 
-For any technologies/frameworks mentioned in the plan, query Context7 for relevant documentation and patterns.
+For any technologies/frameworks mentioned in the plan, query your documentation tool (e.g., Context7) for relevant documentation and patterns. If you don't have such a tool, skip this.
 
-**Use WebSearch for current best practices:**
+**Use web search for current best practices (if available):**
 
-Search for recent (2025-2026) articles, blog posts, and documentation on topics in the plan.
+Search for recent (2025-2026) articles, blog posts, and documentation on topics in the plan. If you don't have web search available, skip this.
 
 ### 5. Discover and Run ALL Review Agents
 
@@ -298,14 +305,14 @@ Dynamically discover every available agent and run them ALL against the plan. Do
 **Step 1: Discover ALL available agents from ALL sources**
 
 ```bash
-# 1. Project-local agents (highest priority - project-specific)
-find .claude/agents -name "*.md" 2>/dev/null
+# 1. Project-local agents (highest priority - project-specific), if present
+find .claude/agents -name "*.md" 2>/dev/null || true
 
-# 2. User's global agents
-find ~/.claude/agents -name "*.md" 2>/dev/null
+# 2. User's global agents, if present
+find ~/.claude/agents -name "*.md" 2>/dev/null || true
 
-# 3. Installed plugin agents (Claude Code specific)
-find ~/.claude/plugins/cache -path "*/agents/*.md" 2>/dev/null
+# 3. Optional: installed plugin agents (environment-specific)
+find ~/.claude/plugins/cache -path "*/agents/*.md" 2>/dev/null || true
 ```
 
 **Important:** Skip workflow orchestrator agents — only use review, research, design, and docs agents.
@@ -323,16 +330,23 @@ Read the first few lines of each agent file to understand what it reviews/analyz
 
 **Step 3: Launch ALL agents in parallel**
 
-For EVERY agent discovered, launch a Task in parallel:
+Codex CLI mapping: spawn one subagent per agent (`spawn_agent`) and run them concurrently; then `wait` for all and collect their outputs.
+
+For EVERY agent discovered, spawn a reviewer subagent in parallel with this prompt:
 
 ```
-Task [agent-name]: "Review this plan using your expertise. Apply all your checks and patterns. Plan content: [full plan content]"
+Subagent prompt (agent review):
+
+Review this plan using your expertise. Apply all your checks and patterns.
+
+Plan content:
+[full plan content]
 ```
 
 **CRITICAL RULES:**
 - Do NOT filter agents by "relevance" - run them ALL
 - Do NOT skip agents because they "might not apply" - let them decide
-- Launch ALL agents in a SINGLE message with multiple Task tool calls
+- Start all reviewer subagents concurrently (no need to serialize)
 - 20, 30, 40 parallel agents is fine - use everything
 - Each agent may catch something others miss
 - The goal is MAXIMUM coverage, not efficiency
