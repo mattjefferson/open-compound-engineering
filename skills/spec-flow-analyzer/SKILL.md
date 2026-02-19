@@ -121,7 +121,8 @@ For each question, include:
 
 [Concrete actions to resolve the gaps and questions]
 
-Key principles:
+### Key Principles
+
 - **Be exhaustively thorough** - assume the spec will be implemented exactly as written, so every gap matters
 - **Think like a user** - walk through flows as if you're actually using the feature
 - **Consider the unhappy paths** - errors, failures, and edge cases are where most gaps hide
