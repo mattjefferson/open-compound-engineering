@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2026-02-18
+
+### Added
+
+- `scripts/install.sh` for installing commands and skills to claude, codex, or gemini targets
+- Gemini target support (skills only to `~/.gemini/skills/`)
+
+### Changed
+
+- For claude target, commands that duplicate a skill are skipped (skills take precedence)
+- Fixed `resolve_pr_parallel` script paths to use relative paths instead of `${CLAUDE_PLUGIN_ROOT}`
+- Fixed `resolve_pr_parallel` directory name mismatch (hyphens → underscores)
+- Removed generated `config.toml` (MCP server config)
+
 ## [0.2.0] - 2026-02-18
 
 ### Added

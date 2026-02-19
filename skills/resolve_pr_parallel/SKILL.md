@@ -24,7 +24,7 @@ Claude Code automatically detects git context:
 Fetch unresolved review threads using the GraphQL script:
 
 ```bash
-bash ${CLAUDE_PLUGIN_ROOT}/skills/resolve-pr-parallel/scripts/get-pr-comments PR_NUMBER
+bash scripts/get-pr-comments PR_NUMBER
 ```
 
 This returns only **unresolved, non-outdated** threads with file paths, line numbers, and comment bodies.
@@ -49,9 +49,9 @@ Spawn a `pr-comment-resolver` agent for each unresolved item in parallel.
 
 If there are 3 comments, spawn 3 agents:
 
-1. Task pr-comment-resolver(comment1)
-2. Task pr-comment-resolver(comment2)
-3. Task pr-comment-resolver(comment3)
+1. pr-comment-resolver(comment1)
+2. pr-comment-resolver(comment2)
+3. pr-comment-resolver(comment3)
 
 Always run all in parallel subagents/Tasks for each Todo item.
 
@@ -61,7 +61,7 @@ Always run all in parallel subagents/Tasks for each Todo item.
 - Resolve each thread programmatically:
 
 ```bash
-bash ${CLAUDE_PLUGIN_ROOT}/skills/resolve-pr-parallel/scripts/resolve-pr-thread THREAD_ID
+bash scripts/resolve-pr-thread THREAD_ID
 ```
 
 - Push to remote
@@ -71,7 +71,7 @@ bash ${CLAUDE_PLUGIN_ROOT}/skills/resolve-pr-parallel/scripts/resolve-pr-thread 
 Re-fetch comments to confirm all threads are resolved:
 
 ```bash
-bash ${CLAUDE_PLUGIN_ROOT}/skills/resolve-pr-parallel/scripts/get-pr-comments PR_NUMBER
+bash scripts/get-pr-comments PR_NUMBER
 ```
 
 Should return an empty array `[]`. If threads remain, repeat from step 1.
