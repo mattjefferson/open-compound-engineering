@@ -91,7 +91,6 @@ These agents are run ONLY when the PR matches specific criteria. Check the PR fi
 
 **MIGRATIONS: If PR contains database migrations, schema.rb, or data backfills:**
 
-- Use the `schema-drift-detector` skill to: PR content - Detects unrelated schema.rb changes by cross-referencing against included migrations (run FIRST)
 - Use the `data-migration-expert` skill to: PR content - Validates ID mappings match production, checks for swapped values, verifies rollback safety
 - Use the `deployment-verification-agent` skill to: PR content - Creates Go/No-Go deployment checklist with SQL verification queries
 
@@ -102,7 +101,6 @@ These agents are run ONLY when the PR matches specific criteria. Check the PR fi
 - PR title/body mentions: migration, backfill, data transformation, ID mapping
 
 **What these agents check:**
-- `schema-drift-detector`: Cross-references schema.rb changes against PR migrations to catch unrelated columns/indexes from local database state
 - `data-migration-expert`: Verifies hard-coded mappings match production reality (prevents swapped IDs), checks for orphaned associations, validates dual-write patterns
 - `deployment-verification-agent`: Produces executable pre/post-deploy checklists with SQL queries, rollback procedures, and monitoring plans
 

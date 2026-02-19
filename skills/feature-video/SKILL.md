@@ -27,7 +27,6 @@ This command creates professional video walkthroughs of features for PR document
 - agent-browser CLI installed
 - Git repository with a PR to document
 - `ffmpeg` installed (for video conversion)
-- `rclone` configured (optional, for cloud upload)
 </requirements>
 
 ## Setup
@@ -204,34 +203,7 @@ ffmpeg -y -framerate 0.5 -pattern_type glob -i 'tmp/screenshots/*.png' \
 
 </record_walkthrough>
 
-### 6. Upload the Video
-
-<upload_video>
-
-**Upload with rclone:**
-
-```bash
-# Check rclone is configured
-rclone listremotes
-
-# Upload video, preview GIF, and screenshots to cloud storage
-# Use --s3-no-check-bucket to avoid permission errors
-rclone copy tmp/videos/ r2:kieran-claude/pr-videos/pr-[number]/ --s3-no-check-bucket --progress
-rclone copy tmp/screenshots/ r2:kieran-claude/pr-videos/pr-[number]/screenshots/ --s3-no-check-bucket --progress
-
-# List uploaded files
-rclone ls r2:kieran-claude/pr-videos/pr-[number]/
-```
-
-Public URLs (R2 with public access):
-```
-Video: https://pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-[number]/feature-demo.mp4
-Preview: https://pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-[number]/feature-demo-preview.gif
-```
-
-</upload_video>
-
-### 7. Update PR Description
+### 6. Update PR Description
 
 <update_pr>
 
@@ -254,11 +226,6 @@ If the PR already has a video section, replace it. Otherwise, append:
 *Click to view full video*
 ```
 
-Example:
-```markdown
-[![Feature Demo](https://pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-137/feature-demo-preview.gif)](https://pub-4047722ebb1b4b09853f24d3b61467f1.r2.dev/pr-videos/pr-137/feature-demo.mp4)
-```
-
 **Update the PR:**
 ```bash
 gh pr edit [number] --body "[updated body with video section]"
@@ -275,7 +242,7 @@ _Automated walkthrough of the changes in this PR_"
 
 </update_pr>
 
-### 8. Cleanup
+### 7. Cleanup
 
 <cleanup>
 
@@ -289,7 +256,7 @@ echo "Video retained at: tmp/videos/feature-demo.gif"
 
 </cleanup>
 
-### 9. Summary
+### 8. Summary
 
 <summary>
 

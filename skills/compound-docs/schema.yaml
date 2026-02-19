@@ -133,7 +133,7 @@ optional_fields:
       - "turbo-stream"
 
 validation_rules:
-  - "module must be a valid CORA module name"
+  - "module must be a valid module name"
   - "date must be in YYYY-MM-DD format"
   - "problem_type must match one of the enum values"
   - "component must match one of the enum values"

@@ -75,7 +75,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - You plan to switch between branches frequently
 
 3. **Create Todo List**
-   - Use TodoWrite to break plan into actionable tasks
+   - Use tasks to break plan into actionable tasks
    - Include dependencies between tasks
    - Prioritize based on what needs to be done first
    - Include testing and quality check tasks
@@ -89,13 +89,13 @@ This command takes a work document (plan, specification, or todo file) and execu
 
    ```
    while (tasks remain):
-     - Mark task as in_progress in TodoWrite
+     - Mark task as in_progress in tasks
      - Read any referenced files from the plan
      - Look for similar patterns in codebase
      - Implement following existing conventions
      - Write tests for new functionality
      - Run tests after changes
-     - Mark task as completed in TodoWrite
+     - Mark task as completed in tasks
      - Mark off the corresponding checkbox in the plan file ([ ] → [x])
      - Evaluate for incremental commit (see below)
    ```
@@ -156,7 +156,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Repeat until implementation matches design
 
 6. **Track Progress**
-   - Keep TodoWrite updated as you complete tasks
+   - Keep tasks updated as you complete tasks
    - Note any blockers or unexpected discoveries
    - Create new tasks if scope expands
    - Keep user informed of major milestones
@@ -182,7 +182,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    Run configured agents in parallel with Task tool. Present findings and address critical issues.
 
 3. **Final Validation**
-   - All TodoWrite tasks marked completed
+   - All tasks marked completed
    - All tests pass
    - Linting passes
    - Code follows existing patterns
@@ -451,7 +451,7 @@ See the `orchestrating-swarms` skill for detailed swarm patterns and best practi
 Before creating PR, verify:
 
 - [ ] All clarifying questions asked and answered
-- [ ] All TodoWrite tasks marked completed
+- [ ] All tasks marked completed
 - [ ] Tests pass (run project's test command)
 - [ ] Linting passes (use linting-agent)
 - [ ] Code follows existing patterns
@@ -480,7 +480,7 @@ For most features: tests + linting + following patterns is sufficient.
 - **Skipping clarifying questions** - Ask now, not after building wrong thing
 - **Ignoring plan references** - The plan has links for a reason
 - **Testing at the end** - Test continuously or suffer later
-- **Forgetting TodoWrite** - Track progress or lose track of what's done
+- **Forgetting tasks** - Track progress or lose track of what's done
 - **80% done syndrome** - Finish the feature, don't move on early
 - **Over-reviewing simple changes** - Save reviewer agents for complex work
 - **Creating separate completion reports** - Update the plan file itself, never create new files like `COMPLETION_REPORT.md`

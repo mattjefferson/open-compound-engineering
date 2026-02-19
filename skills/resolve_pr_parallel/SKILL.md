@@ -37,7 +37,7 @@ gh api repos/{owner}/{repo}/pulls/PR_NUMBER/comments
 
 ### 2. Plan
 
-Create a TodoWrite list of all unresolved items grouped by type:
+Create a task list of all unresolved items grouped by type:
 - Code changes requested
 - Questions to answer
 - Style/convention fixes
