@@ -33,10 +33,10 @@ Categorize by primary dependency type:
 
 | Type | Examples | Verification Method |
 |------|----------|---------------------|
-| **API/Service** | manage-stripe, manage-gohighlevel | Context7 + WebSearch |
+| **API/Service** | manage-stripe, manage-gohighlevel | Ref / Context7 + WebSearch |
 | **CLI Tools** | build-macos-apps (xcodebuild, swift) | Run commands |
-| **Framework** | build-iphone-apps (SwiftUI, UIKit) | Context7 for docs |
-| **Integration** | setup-stripe-payments | WebFetch + Context7 |
+| **Framework** | build-iphone-apps (SwiftUI, UIKit) | Ref / Context7 for docs |
+| **Integration** | setup-stripe-payments | WebFetch + Ref / Context7 |
 | **Pure Process** | create-agent-skills | No external deps |
 
 Report: "This skill is primarily [type]-based. I'll verify using [method]."
@@ -82,11 +82,7 @@ which {tool-name}
 ```
 
 ### For API/Service Skills
-Use Context7 to fetch current documentation:
-```
-mcp__context7__resolve-library-id: {service-name}
-mcp__context7__get-library-docs: {library-id}, topic: {relevant-topic}
-```
+Look up current documentation using a doc tool such as Ref or Context7. If unavailable, fall back to WebSearch for official docs.
 
 Compare skill's documented patterns against current docs:
 - Are endpoints still valid?
@@ -94,11 +90,7 @@ Compare skill's documented patterns against current docs:
 - Are there deprecated methods being used?
 
 ### For Framework Skills
-Use Context7:
-```
-mcp__context7__resolve-library-id: {framework-name}
-mcp__context7__get-library-docs: {library-id}, topic: {specific-api}
-```
+Look up the framework's current API docs using a doc tool such as Ref or Context7. If unavailable, fall back to WebSearch for official docs.
 
 Check:
 - Are documented APIs still current?
@@ -113,7 +105,7 @@ WebSearch for recent changes:
 "[service name] deprecated endpoints"
 ```
 
-Then Context7 for current SDK patterns.
+Then look up current SDK patterns via Ref or Context7.
 
 ### For Services with Status Pages
 WebFetch official docs/changelog if available.
@@ -181,11 +173,9 @@ Based on skill type, recommend:
 which {tool} && {tool} --version
 ```
 
-**Context7 pattern for any library:**
-```
-1. resolve-library-id: "{library-name}"
-2. get-library-docs: "{id}", topic: "{specific-feature}"
-```
+**Doc lookup pattern (Ref, Context7, etc.):**
+1. Resolve the library ID for "{library-name}"
+2. Get library docs for "{specific-feature}"
 
 **WebSearch patterns:**
 - Breaking changes: "{service} breaking changes 2026"

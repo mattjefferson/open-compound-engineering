@@ -134,13 +134,11 @@ For EACH major library/tool/pattern found:
 
 ### Documentation Sources
 
-Use Context7 MCP when available:
-```
-mcp__context7__resolve-library-id: {library-name}
-mcp__context7__get-library-docs: {library-id}
-```
+Look up library documentation using a doc tool such as Ref or Context7:
+1. Resolve the library ID for the library name
+2. Get library docs for the relevant topics
 
-Focus on official docs, not tutorials.
+If no doc tool is available, fall back to WebSearch. Focus on official docs, not tutorials.
 
 ## Step 5: Organize Knowledge Into Domain Areas
 
