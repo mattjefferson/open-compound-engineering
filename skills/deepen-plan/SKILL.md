@@ -285,11 +285,7 @@ Return concrete, actionable recommendations."
 
 **Also use Context7 MCP for framework documentation:**
 
-For any technologies/frameworks mentioned in the plan, query Context7:
-```
-mcp__plugin_compound-engineering_context7__resolve-library-id: Find library ID for [framework]
-mcp__plugin_compound-engineering_context7__query-docs: Query documentation for specific patterns
-```
+For any technologies/frameworks mentioned in the plan, query Context7 for relevant documentation and patterns.
 
 **Use WebSearch for current best practices:**
 

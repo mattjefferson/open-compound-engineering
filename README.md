@@ -4,15 +4,14 @@ A cleaned up, agent-agnostic, simpler version of [compound-engineering-plugin](h
 
 ## Why
 
-The original compound-engineering plugin is powerful but tightly coupled to Claude Code's plugin system. This project extracts the valuable commands, skills, and agent patterns into a straightforward directory structure that works across coding agents and tools.
+I really emjoy using the Compound Engineering system.  Since I wanted to use it with my team and others, I wanted to simplify it down to the core workflows, so that it wouldn't interfere with some of the teams code specific skills, workflows, etc.
 
 ## Goals
 
-- **Agent agnostic** — Commands and skills as plain markdown, usable by any AI coding assistant
-- **Simpler** — Flat directory structure, no build step, no plugin manifest
-- **Curated** — Remove redundancy, consolidate overlapping skills, keep what's useful
-- **Maintained** — Track changes from upstream while evolving independently
-- **Artifact compatible** — Skills produce the same output artifacts (plans, solutions, todos, brainstorms) as the original, so teams can mix and match
+- **Artifact compatible** — Produce the same output artifacts (plans, solutions, todos, brainstorms) as the original, so teams can mix and match
+- **Trim out extras** — Clean out extra skills, etc. that are not needed by the core workflow.
+- **Agent Agnostic** - More focus on artifacts that apply across agents, rather than a Claude Code specific.  For example, use AGENTS.md instead of CLAUDE.md.
+
 
 ## Structure
 
