@@ -152,7 +152,7 @@ Think like a product manager - what would make this issue clear and actionable? 
 
 After planning the issue structure, run SpecFlow Analyzer to validate and refine the feature specification:
 
-- Use the `spec-flow-analyzer` skill to: feature_description, research_findings
+- Use the `spec-flow-analyzer` (feature_description, research_findings)
 
 **SpecFlow Analyzer Output:**
 
@@ -305,12 +305,14 @@ After writing the plan file, ask the user what they'd like to do next:
 
 **Options:**
 1. **Open plan in editor** - Open the plan file for review
-2. **Review and refine** - Improve the document through structured self-review
-3. **Start `workflows-work`** - Begin implementing this plan locally
-4. **Create Issue** - Create issue in project tracker (GitHub/Linear)
+2. **Run `/deepen-plan`** - Enhance each section with parallel research agents (best practices, performance, UI)
+3. **Review and refine** - Improve the document through structured self-review
+4. **Start `workflows-work`** - Begin implementing this plan locally
+5. **Create Issue** - Create issue in project tracker (GitHub/Linear)
 
 Based on selection:
 - **Open plan in editor** → Run `open docs/plans/<plan_filename>.md` to open the file in the user's default editor
+- **`/deepen-plan`** → Load `deepen-plan` skill with the plan file path to enhance with research
 - **Review and refine** → Load `document-review` skill.
 - **`workflows-work`** → Run the `workflows-work` skill with the plan file path
 - **Create Issue** → See "Issue Creation" section below
