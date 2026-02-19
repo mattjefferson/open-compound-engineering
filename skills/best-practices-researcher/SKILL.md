@@ -38,7 +38,7 @@ Before going online, check if curated knowledge already exists in skills:
    - Frontend/Design → `frontend-design`
    - AI/Agents → `agent-native-architecture`, `create-agent-skills`
    - Documentation → `compound-docs`
-   - File operations → `rclone`, `git-worktree`
+   - File operations → `git-worktree`
    - Image generation → `gemini-imagegen`
 
 3. **Extract Patterns from Skills**:
