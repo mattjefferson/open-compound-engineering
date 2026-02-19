@@ -276,13 +276,21 @@ end
 - [ ] Add names of files in pseudo code examples and todo lists
 - [ ] Add an ERD mermaid diagram if applicable for new model changes
 
-## Output Format
+## Write Plan File
 
-Before writing the plan, ensure the output directory exists in the target repo:
+**REQUIRED: Write the plan file to disk before presenting any options.**
 
 ```bash
-mkdir -p docs/plans
+mkdir -p docs/plans/
 ```
+
+Save the complete plan to `docs/plans/YYYY-MM-DD-<type>-<descriptive-name>-plan.md`. This step is mandatory and cannot be skipped — even when running as part of an automated pipeline.
+
+Confirm: "Plan written to docs/plans/[filename]"
+
+**Pipeline mode:** If invoked from an automated workflow (e.g. a chained command sequence), skip interactive prompts. Make decisions automatically and proceed to writing the plan.
+
+## Output Format
 
 **Filename:** Use the date and kebab-case filename from Step 2 Title & Categorization.
 
