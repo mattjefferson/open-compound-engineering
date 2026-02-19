@@ -192,7 +192,11 @@ root_cause: "Missing includes on association"
 
 ```bash
 # Read first 20 lines of each learning (frontmatter + summary)
-head -20 docs/solutions/**/*.md
+find docs/solutions -type f -name "*.md" -print 2>/dev/null | head -50 | while read -r f; do
+  echo "### $f"
+  head -20 "$f"
+  echo
+done
 ```
 
 **Step 3: Filter - only spawn subagents for LIKELY relevant learnings**
@@ -450,20 +454,20 @@ Before finalizing:
 
 ## Post-Enhancement Options
 
-After writing the enhanced plan, use the **AskUserQuestion tool** to present these options:
+After writing the enhanced plan, ask the user what they'd like to do next:
 
 **Question:** "Plan deepened at `[plan_path]`. What would you like to do next?"
 
 **Options:**
 1. **View diff** - Show what was added/changed
-2. **Run `technical_review`** - Get feedback from reviewers on enhanced plan
+2. **Review and refine** - Improve the document through structured self-review
 3. **Start `workflows-work`** - Begin implementing this enhanced plan
 4. **Deepen further** - Run another round of research on specific sections
 5. **Revert** - Restore original plan (if backup exists)
 
 Based on selection:
 - **View diff** → Run `git diff [plan_path]` or show before/after
-- **`technical_review`** → Run the `technical_review` skill with the plan file path
+- **Review and refine** → Load `document-review` skill.
 - **`workflows-work`** → Run the `workflows-work` skill with the plan file path
 - **Deepen further** → Ask which sections need more research, then re-run those agents
 - **Revert** → Restore from git or backup

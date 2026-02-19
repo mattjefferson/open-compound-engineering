@@ -29,7 +29,7 @@ Do not proceed until you have a clear feature description from the user.
 Before asking questions, look for recent brainstorm documents in `docs/brainstorms/` that match this feature:
 
 ```bash
-ls -la docs/brainstorms/*.md 2>/dev/null | head -10
+find docs/brainstorms -maxdepth 1 -type f -name '*.md' 2>/dev/null | sort -r | head -10
 ```
 
 **Relevance criteria:** A brainstorm is relevant if:
@@ -45,11 +45,11 @@ ls -la docs/brainstorms/*.md 2>/dev/null | head -10
 5. Use brainstorm decisions as input to the research phase
 
 **If multiple brainstorms could match:**
-Use **AskUserQuestion tool** to ask which brainstorm to use, or whether to proceed without one.
+Ask the user which brainstorm to use, or whether to proceed without one.
 
 **If no brainstorm found (or not relevant), run idea refinement:**
 
-Refine the idea through collaborative dialogue using the **AskUserQuestion tool**:
+Refine the idea through collaborative dialogue:
 
 - Ask questions one at a time to understand the idea fully
 - Prefer multiple choice questions when natural options exist
@@ -276,6 +276,12 @@ end
 
 ## Output Format
 
+Before writing the plan, ensure the output directory exists in the target repo:
+
+```bash
+mkdir -p docs/plans
+```
+
 **Filename:** Use the date and kebab-case filename from Step 2 Title & Categorization.
 
 ```
@@ -293,32 +299,24 @@ Examples:
 
 ## Post-Generation Options
 
-After writing the plan file, use the **AskUserQuestion tool** to present these options:
+After writing the plan file, ask the user what they'd like to do next:
 
 **Question:** "Plan ready at `docs/plans/YYYY-MM-DD-<type>-<name>-plan.md`. What would you like to do next?"
 
 **Options:**
 1. **Open plan in editor** - Open the plan file for review
-2. **Run `deepen-plan`** - Enhance each section with parallel research agents (best practices, performance, UI)
-3. **Run `technical_review`** - Technical feedback from code-focused reviewers (DHH, Kieran, Simplicity)
-4. **Review and refine** - Improve the document through structured self-review
-5. **Start `workflows-work`** - Begin implementing this plan locally
-6. **Start `workflows-work` on remote** - Begin implementing in Claude Code on the web (use `&` to run in background)
-7. **Create Issue** - Create issue in project tracker (GitHub/Linear)
+2. **Review and refine** - Improve the document through structured self-review
+3. **Start `workflows-work`** - Begin implementing this plan locally
+4. **Create Issue** - Create issue in project tracker (GitHub/Linear)
 
 Based on selection:
 - **Open plan in editor** → Run `open docs/plans/<plan_filename>.md` to open the file in the user's default editor
-- **`deepen-plan`** → Run the `deepen-plan` skill with the plan file path to enhance with research
-- **`technical_review`** → Run the `technical_review` skill with the plan file path
 - **Review and refine** → Load `document-review` skill.
 - **`workflows-work`** → Run the `workflows-work` skill with the plan file path
-- **`workflows-work` on remote** → Run `workflows-work docs/plans/<plan_filename>.md &` to start work in background for Claude Code web
 - **Create Issue** → See "Issue Creation" section below
-- **Other** (automatically provided) → Accept free text for rework or specific changes
+- **Other** → Accept free text for rework or specific changes
 
-**Note:** If running `workflows-plan` with ultrathink enabled, automatically run `deepen-plan` after plan creation for maximum depth and grounding.
-
-Loop back to options after Simplify or Other changes until user selects `workflows-work` or `technical_review`.
+Loop back to options after Simplify or Other changes until user selects `workflows-work`.
 
 ## Issue Creation
 
@@ -333,12 +331,14 @@ When user selects "Create Issue", detect their project tracker from AGENTS.md:
    Use the title and type from Step 2 (already in context - no need to re-read the file):
 
    ```bash
+   command -v gh >/dev/null || { echo "gh not installed; install GitHub CLI or create the issue manually."; exit 1; }
    gh issue create --title "<type>: <title>" --body-file <plan_path>
    ```
 
 3. **If Linear:**
 
    ```bash
+   command -v linear >/dev/null || { echo "linear CLI not installed; install it or create the issue manually."; exit 1; }
    linear issue create --title "<title>" --description "$(cat <plan_path>)"
    ```
 
@@ -348,6 +348,6 @@ When user selects "Create Issue", detect their project tracker from AGENTS.md:
 
 5. **After creation:**
    - Display the issue URL
-   - Ask if they want to proceed to `workflows-work` or `technical_review`
+   - Ask if they want to proceed to `workflows-work`
 
 NEVER CODE! Just research and write the plan.

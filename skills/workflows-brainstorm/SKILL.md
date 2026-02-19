@@ -35,7 +35,7 @@ Evaluate whether brainstorming is needed based on the feature description.
 - Constrained, well-defined scope
 
 **If requirements are already clear:**
-Use **AskUserQuestion tool** to suggest: "Your requirements seem detailed enough to proceed directly to planning. Should I run `workflows-plan` instead, or would you like to explore the idea further?"
+Ask the user: "Your requirements seem detailed enough to proceed directly to planning. Should I run `workflows-plan` instead, or would you like to explore the idea further?"
 
 ### Phase 1: Understand the Idea
 
@@ -49,7 +49,7 @@ Focus on: similar features, established patterns, AGENTS.md guidance.
 
 #### 1.2 Collaborative Dialogue
 
-Use the **AskUserQuestion tool** to ask questions **one at a time**.
+Ask the user questions **one at a time**.
 
 **Guidelines (see `brainstorming` skill for detailed techniques):**
 - Prefer multiple choice when natural options exist
@@ -70,7 +70,7 @@ For each approach, provide:
 
 Lead with your recommendation and explain why. Apply YAGNI—prefer simpler solutions.
 
-Use **AskUserQuestion tool** to ask which approach the user prefers.
+Ask the user which approach they prefer.
 
 ### Phase 3: Capture the Design
 
@@ -80,11 +80,17 @@ Write a brainstorm document to `docs/brainstorms/YYYY-MM-DD-<topic>-brainstorm.m
 
 Ensure `docs/brainstorms/` directory exists before writing.
 
-**IMPORTANT:** Before proceeding to Phase 4, check if there are any Open Questions listed in the brainstorm document. If there are open questions, YOU MUST ask the user about each one using AskUserQuestion before offering to proceed to planning. Move resolved questions to a "Resolved Questions" section.
+Create the directory in the target repo if it doesn't exist:
+
+```bash
+mkdir -p docs/brainstorms
+```
+
+**IMPORTANT:** Before proceeding to Phase 4, check if there are any Open Questions listed in the brainstorm document. If there are open questions, you MUST ask the user about each one before offering to proceed to planning. Move resolved questions to a "Resolved Questions" section.
 
 ### Phase 4: Handoff
 
-Use **AskUserQuestion tool** to present next steps:
+Ask the user what they want to do next:
 
 **Question:** "Brainstorm captured. What would you like to do next?"
 
@@ -94,7 +100,7 @@ Use **AskUserQuestion tool** to present next steps:
 3. **Ask more questions** - I have more questions to clarify before moving on
 4. **Done for now** - Return later
 
-**If user selects "Ask more questions":** YOU (Claude) return to Phase 1.2 (Collaborative Dialogue) and continue asking the USER questions one at a time to further refine the design. The user wants YOU to probe deeper - ask about edge cases, constraints, preferences, or areas not yet explored. Continue until the user is satisfied, then return to Phase 4.
+**If user selects "Ask more questions":** Return to Phase 1.2 (Collaborative Dialogue) and continue asking the user questions one at a time to further refine the design. Probe deeper on edge cases, constraints, preferences, or areas not yet explored. Continue until the user is satisfied, then return to Phase 4.
 
 **If user selects "Review and refine":**
 
