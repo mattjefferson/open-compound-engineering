@@ -7,13 +7,13 @@ The goal is fast orientation without context overload.
 
 ## Principle
 
-`CLAUDE.md` is a map, not a manual.
+`AGENTS.md` is a map, not a manual.
 Keep it compact and point to deeper documents.
 
 ## Target Shape
 
 ```text
-CLAUDE.md
+AGENTS.md
 docs/
   ARCHITECTURE.md
   CONVENTIONS.md
@@ -24,14 +24,14 @@ docs/
   solutions/
 ```
 
-## CLAUDE.md Guidelines
+## AGENTS.md Guidelines
 
 - Target length: around 100 lines.
 - Include mission, structure map, and common commands.
 - Link to deeper docs.
 - Avoid pasting full policies inline.
 
-## What to Put in CLAUDE.md
+## What to Put in AGENTS.md
 
 - Repo purpose and boundaries.
 - Directory map with one-line descriptions.
@@ -40,7 +40,7 @@ docs/
 - Where active plans live.
 - How to run key quality commands.
 
-## What Not to Put in CLAUDE.md
+## What Not to Put in AGENTS.md
 
 - Full style guide text.
 - Long architecture narratives.
@@ -49,7 +49,7 @@ docs/
 
 ## Two-Hop Navigation Rule
 
-From `CLAUDE.md`, an agent should reach needed depth in two clicks/opens:
+From `AGENTS.md`, an agent should reach needed depth in two clicks/opens:
 
 - Hop 1: map to the correct document.
 - Hop 2: document section with actionable guidance.
@@ -58,7 +58,7 @@ From `CLAUDE.md`, an agent should reach needed depth in two clicks/opens:
 
 ### Layer 1: Orientation
 
-- `CLAUDE.md`
+- `AGENTS.md`
 - `README.md`
 
 ### Layer 2: Operating Rules
@@ -88,7 +88,7 @@ Every core doc should link to:
 
 Example:
 
-- `CLAUDE.md` -> `docs/CONVENTIONS.md`
+- `AGENTS.md` -> `docs/CONVENTIONS.md`
 - `docs/CONVENTIONS.md` -> specific solution docs.
 
 ## Review Prompts for Disclosure Quality
@@ -113,7 +113,7 @@ If current docs are monolithic:
 3. Add links from map to policy docs.
 4. Add links from policy docs to examples.
 
-## Example CLAUDE.md Skeleton
+## Example AGENTS.md Skeleton
 
 ```markdown
 # Project Map
@@ -147,8 +147,8 @@ Healthy progressive disclosure has:
 ## Operational Check
 
 ```bash
-wc -l CLAUDE.md
-rg -n "docs/CONVENTIONS.md|docs/ARCHITECTURE.md|docs/TECH_DEBT.md" CLAUDE.md
+wc -l AGENTS.md
+rg -n "docs/CONVENTIONS.md|docs/ARCHITECTURE.md|docs/TECH_DEBT.md" AGENTS.md
 ```
 
 ## Success Criteria

@@ -95,7 +95,7 @@ Fix: set `status: active` or `status: completed`.
 
 ## Documentation Standards
 
-- `CLAUDE.md` maps the repo.
+- `AGENTS.md` maps the repo.
 - `docs/ARCHITECTURE.md` explains module boundaries.
 - `docs/CONVENTIONS.md` defines coding rules.
 - `docs/TECH_DEBT.md` tracks recurring issues.
@@ -106,7 +106,7 @@ Fix: set `status: active` or `status: completed`.
 Create lightweight checks:
 
 - Lint for ambiguous directory names.
-- Check `CLAUDE.md` line count and required sections.
+- Check `AGENTS.md` line count and required sections.
 - Validate required markdown tables in debt/quality docs.
 - Fail CI when docs are missing after feature templates are generated.
 
@@ -152,7 +152,7 @@ Promote from convention to enforcement if:
 
 ```bash
 # Check map size
-wc -l CLAUDE.md
+wc -l AGENTS.md
 
 # Find ambiguous files
 rg -n "utils|misc|helper" app lib src

@@ -16,6 +16,7 @@ Supported outputs:
 - `docs/TECH_DEBT.md`
 - `docs/QUALITY_SCORE.md`
 - `docs/ARCHITECTURE.md`
+- `AGENTS.md`
 - `CLAUDE.md`
 - `docs/SECURITY.md`
 - `docs/FRONTEND.md`

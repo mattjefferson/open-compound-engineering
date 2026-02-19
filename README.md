@@ -12,6 +12,7 @@ The original compound-engineering plugin is powerful but tightly coupled to Clau
 - **Simpler** — Flat directory structure, no build step, no plugin manifest
 - **Curated** — Remove redundancy, consolidate overlapping skills, keep what's useful
 - **Maintained** — Track changes from upstream while evolving independently
+- **Artifact compatible** — Skills produce the same output artifacts (plans, solutions, todos, brainstorms) as the original, so teams can mix and match
 
 ## Structure
 

@@ -84,7 +84,7 @@ If intent is ambiguous, ask one clarifying question and continue.
 - `assets/TECH_DEBT.md`
 - `assets/QUALITY_SCORE.md`
 - `assets/ARCHITECTURE.md`
-- `assets/CLAUDE_MD.md`
+- `assets/AGENTS_MD.md`
 - `assets/SECURITY.md`
 - `assets/FRONTEND.md`
 - `assets/DESIGN.md`

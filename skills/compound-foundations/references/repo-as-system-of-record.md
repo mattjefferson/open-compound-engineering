@@ -65,7 +65,7 @@ This enables simple grep-based filtering.
 
 ## Required Links
 
-- `CLAUDE.md` -> core docs.
+- `AGENTS.md` -> core docs.
 - Conventions -> source solution docs.
 - Debt entries -> source solution docs.
 - Changelog entries -> major doc artifacts when relevant.
