@@ -165,8 +165,6 @@ Subagent Results:
 Specialized Agent Reviews (Auto-Triggered):
   ✓ performance-oracle: Validated query optimization approach
   ✓ code-simplicity-reviewer: Solution is appropriately minimal
-  ✓ style-editor: Documentation style verified
-
 File created:
 - docs/solutions/performance-issues/n-plus-one-brief-generation.md
 
@@ -224,7 +222,6 @@ Based on problem type, these agents can enhance documentation:
 
 ### Enhancement & Documentation
 - **best-practices-researcher**: Enriches solution with industry best practices
-- **style-editor**: Reviews documentation style and clarity
 - **framework-docs-researcher**: Links to Rails/gem documentation references
 
 ### When to Invoke

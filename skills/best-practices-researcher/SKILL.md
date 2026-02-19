@@ -37,7 +37,7 @@ Before going online, check if curated knowledge already exists in skills:
    Match the research topic to available skills. Common mappings:
    - Frontend/Design → `frontend-design`
    - AI/Agents → `agent-native-architecture`, `create-agent-skills`
-   - Documentation → `compound-docs`, `style-editor`
+   - Documentation → `compound-docs`
    - File operations → `rclone`, `git-worktree`
    - Image generation → `gemini-imagegen`
 

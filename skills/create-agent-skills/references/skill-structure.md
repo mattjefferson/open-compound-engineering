@@ -108,7 +108,7 @@ Use descriptive names that indicate purpose:
 |---------|----------|
 | Action-oriented | `triage-prs`, `deploy-production`, `review-code` |
 | Domain-specific | `setup-stripe-payments`, `manage-facebook-ads` |
-| Descriptive | `git-worktree`, `frontend-design`, `style-editor` |
+| Descriptive | `git-worktree`, `frontend-design`, `brainstorming` |
 
 ## Progressive Disclosure
 

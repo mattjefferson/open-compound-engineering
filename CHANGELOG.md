@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 - `scripts/install.sh` for installing commands and skills to claude, codex, or gemini targets
 - Gemini target support (skills only to `~/.gemini/skills/`)
 
+### Removed
+
+- `style-editor` skill and all cross-references
+
 ### Changed
 
 - For claude target, commands that duplicate a skill are skipped (skills take precedence)
