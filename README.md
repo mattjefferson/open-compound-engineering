@@ -27,7 +27,7 @@ I really enjoy using the Compound Engineering system. Since I wanted to use it w
 
 ## What's Included
 
-**9 commands** and **46 skills** covering:
+**12 commands** and **49 skills** covering:
 
 - **Workflows** — brainstorm, plan, work, review, compound (document learnings)
 - **Research** — best practices, framework docs, repo analysis, git history, learnings

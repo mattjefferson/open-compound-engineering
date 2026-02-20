@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.3] - 2026-02-20
+
+### Added
+
+- Added `lfg` workflow artifacts (`commands/lfg.md`, `skills/lfg/SKILL.md`)
+- Synced upstream v2.35.1 workflow updates (Write Plan File step, System-Wide Impact sections, System-Wide Test Check step)
+
+### Changed
+
+- Updated skill workflows to reference Ref / Context7 as doc tool references instead of hard-coding MCP call syntax
+
+### Fixed
+
+- Added `.gitignore` entry for `.DS_Store`
+- Updated `docs/mapping.md` command + skill counts and provenance tables to match repository contents
+
 ## [0.3.2] - 2026-02-19
 
 ### Added
